@@ -11,7 +11,7 @@
                 class="option option1"
                 onclick="handleOptionClick25(event, '{{ section.settings.form_25_option_1 | replace: "'","" }}')"
               >
-                <span>A</span> {{ section.settings.form_25_option_1 | replace: "'","" }}
+                <span>A</span> {{ section.settings.form_25_option_1 }}
               </div>
             {% endif %}
             {% if section.settings.form_25_option_2 != blank %}
@@ -19,7 +19,7 @@
                 class="option option1"
                 onclick="handleOptionClick25(event, '{{ section.settings.form_25_option_2 | replace: "'","" }}')"
               >
-                <span>B</span> {{ section.settings.form_25_option_2 | replace: "'","" }}
+                <span>B</span> {{ section.settings.form_25_option_2 }}
               </div>
             {% endif %}
             {% if section.settings.form_25_option_3 != blank %}
@@ -27,7 +27,7 @@
                 class="option option1"
                 onclick="handleOptionClick25(event, '{{ section.settings.form_25_option_3 | replace: "'","" }}')"
               >
-                <span>C</span> {{ section.settings.form_25_option_3 | replace: "'","" }}
+                <span>C</span> {{ section.settings.form_25_option_3 }}
               </div>
             {% endif %}
             {% if section.settings.form_25_option_4 != blank %}
@@ -35,7 +35,7 @@
                 class="option option1"
                 onclick="handleOptionClick25(event, '{{ section.settings.form_25_option_4 | replace: "'","" }}')"
               >
-                <span>D</span> {{ section.settings.form_25_option_4 | replace: "'","" }}
+                <span>D</span> {{ section.settings.form_25_option_4 }}
               </div>
             {% endif %}
           </div>
@@ -44,7 +44,7 @@
               type="text"
               class="form-control"
               id="autreInput25"
-              placeholder="Enter your autre"
+              placeholder="{{ 'general.type_form.placeholder' | t }}"
               oninput="handleAutreInput25()"
             >
           </div>

@@ -24,7 +24,7 @@
               </div>
             {% endif %}
             {% if section.settings.form_1_option_3 != blank %}
-              <div class="option option1" onclick="handleOptionClick(event, '{{ section.settings.form_1_option_3 }}')">
+              <div class="option option1" data-option="{{ section.settings.form_1_option_3 }}" onclick="handleOptionClick(event, this.dataset.option)">
                 <span>C</span> {{ section.settings.form_1_option_3 }}
               </div>
             {% endif %}
@@ -44,7 +44,7 @@
               type="text"
               class="form-control"
               id="autreInput"
-              placeholder="Enter your autre"
+              placeholder="{{ 'general.type_form.placeholder' | t }}"
               oninput="handleAutreInput()"
             >
           </div>
@@ -97,6 +97,7 @@
   function getLastOptionText() {
     const lastOption = options[options.length - 1].textContent.trim();
     const optionTextNew = lastOption.substring(1); // Exclude the first character (A, B, C, etc.)
+    console.log(optionTextNew);
     return optionTextNew; // Get the text content of the last option's span element without the initial letter
   }
 

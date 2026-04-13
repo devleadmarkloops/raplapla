@@ -284,7 +284,7 @@
       <div class="submission-data custom-form-container">
         <div class="customer addresses form-container page-width section--padding" data-customer-addresses>
           <div id="AddAddress">
-            <h2 id="AddressNewHeading">{{ section.settings.shipping_details_title }}</h2>
+            <h2 id="AddressNewHeading" data-toggle-address>{{ section.settings.shipping_details_title }}</h2>
             <div class="field form-group">
               <input
                 type="text"
@@ -295,6 +295,7 @@
                 autocomplete="given-name"
                 placeholder="{{ 'customer.addresses.first_name' | t }}"
                 required
+                data-toggle-address
               >
               <label class="visually-hidden" for="AddressFirstNameNew">{{ 'customer.addresses.first_name' | t }}</label>
             </div>
@@ -308,6 +309,7 @@
                 autocomplete="family-name"
                 placeholder="{{ 'customer.addresses.last_name' | t }}"
                 required
+                data-toggle-address
               >
               <label class="visually-hidden" for="AddressLastNameNew">{{ 'customer.addresses.last_name' | t }}</label>
             </div>
@@ -319,9 +321,10 @@
                 name="address[email]"
                 value="{{ form.email }}"
                 autocomplete="email"
-                placeholder="Email"
+                placeholder="{{ 'general.type_form.email_placeholder' | t }}"
                 required
-              >
+                data-toggle-address
+                >
               <label class="visually-hidden" for="AddressEmailNew">Email</label>
             </div>
             <div class="field form-group">
@@ -333,6 +336,7 @@
                 value="{{ form.company }}"
                 autocomplete="organization"
                 placeholder="{{ 'customer.addresses.company' | t }}"
+                data-toggle-address
               >
               <label class="visually-hidden" for="AddressCompanyNew">{{ 'customer.addresses.company' | t }}</label>
             </div>
@@ -346,6 +350,7 @@
                 autocomplete="address-line1"
                 placeholder="{{ 'customer.addresses.address1' | t }}"
                 required
+                data-toggle-address
               >
               <label class="visually-hidden" for="AddressAddress1New">{{ 'customer.addresses.address1' | t }}</label>
             </div>
@@ -358,6 +363,7 @@
                 value="{{ form.address2 }}"
                 autocomplete="address-line2"
                 placeholder="{{ 'customer.addresses.address2' | t }}"
+                data-toggle-address
               >
               <label class="visually-hidden" for="AddressAddress2New">{{ 'customer.addresses.address2' | t }}</label>
             </div>
@@ -369,11 +375,12 @@
                 name="address[city]"
                 value="{{ form.city }}"
                 autocomplete="address-level2"
+                data-toggle-address
                 placeholder="{{ 'customer.addresses.city' | t }}"
               >
               <label class="visually-hidden" for="AddressCityNew">{{ 'customer.addresses.city' | t }}</label>
             </div>
-            <div class="field form-group">
+            <div class="field form-group" data-toggle-address>
               <div class="select">
                 <select
                   id="AddressCountryNew"
@@ -411,10 +418,11 @@
                 value="{{ form.zip }}"
                 autocapitalize="characters"
                 autocomplete="postal-code"
-                placeholder="{{ 'customer.addresses.zip' | t }}"
+                placeholder="{{ 'general.type_form.postal_placeholder' | t }}"
                 required
+                data-toggle-address
               >
-              <label class="visually-hidden" for="AddressZipNew">{{ 'customer.addresses.zip' | t }}</label>
+              <label class="visually-hidden" for="AddressZipNew">{{ 'general.type_form.postal_placeholder' | t }}</label>
             </div>
             <div class="field form-group">
               <input
@@ -424,7 +432,9 @@
                 name="address[phone]"
                 value="{{ form.phone }}"
                 autocomplete="tel"
+                required
                 placeholder="{{ 'customer.addresses.phone' | t }}"
+                data-toggle-address
               >
               <label class="visually-hidden" for="AddressPhoneNew">{{ 'customer.addresses.phone' | t }}</label>
             </div>
@@ -437,7 +447,7 @@
           {{ section.settings.product.title }} -<strong> {{ section.settings.product.price | money }}</strong>
         </div>
         <ul id="product-lists" class="product-lists"></ul>
-        <div class='label--for--images' style="display:none; font-weight:bold;">Toy Photos</div>
+        <div class='label--for--images' style="display:none; font-weight:bold;">{{ 'general.type_form.toy_photos' | t }}</div>
         <div id="image-preview-container">
           <!-- The image preview and label will be inserted here -->
           
@@ -446,6 +456,7 @@
       </div>
       <div id="selectedProduct" class="selectedProduct"></div>
       <input id="defaultProduct" type="hidden" name="id" data-product-price="{{ product.price | money }}" value="{{ product.selected_or_first_available_variant.id }}">
+
       <button
         type="submit"
         name="add"
@@ -477,13 +488,14 @@
     const mandatoryFields = document.querySelectorAll('.submission-data input[required]');
 
     function checkFields() {
+      const mandatoryFields = document.querySelectorAll('.submission-data input[required]');
       let allFieldsValid = true;
       mandatoryFields.forEach(function(field) {
-        if (field.value.trim() === '') {
+        if (field.offsetParent !== null && field.value.trim() === '') {
           allFieldsValid = false;
         }
       });
-
+    
       if (allFieldsValid) {
         submitButton.removeAttribute('disabled');
       } else {
@@ -491,12 +503,20 @@
       }
     }
 
-    mandatoryFields.forEach(function(field) {
+
+    document.querySelectorAll('.submission-data input').forEach(function(field) {
       field.addEventListener('input', checkFields);
     });
 
+
     // Initial check
     checkFields();
+    const toggleInputs = document.querySelectorAll("[data-toggle-address]");
+    toggleInputs.forEach(input => {
+      if (input.hasAttribute('required')) {
+        input.dataset.wasRequired = 'true';
+      }
+    });
   });
 </script>
 
@@ -507,12 +527,14 @@
     $('#selectedProduct input').each(function(){
        variants.push($(this).val());
     });
+    console.log(variants);
     var lineItems = variants.map(function(variantID) {
       return {
         id: variantID,
         quantity: 1
       };
     });
+    console.log(lineItems);
     // const items = selectedProducts
     //   .filter(product => product.value !== '') // Filter out empty values
     //   .map(product => ({
@@ -589,7 +611,7 @@
               phone: $('#AddressPhoneNew').val()
           };
           var email=$('#AddressEmailNew').val();
-          var name=$('#AddressFirstNameNew').val()+' '+$('#AddressLastNameNew').val();
+          var name=$('#AddressFirstNameNew').val()+' '+$('#AddressLastNameNew').val()
           localStorage.setItem("email", email);
           localStorage.setItem("name", name);
           var addressData = JSON.stringify(formData);
@@ -622,6 +644,7 @@
             // Log the formatted line items
             // console.log(formattedLineItems);
             var jsonString = JSON.stringify(formattedLineItems);
+            console.log("jsonString", jsonString);
 
             // Log the JSON string
             // console.log(jsonString);
@@ -634,36 +657,31 @@
                   address:addressData
                 },
                 success: function (response) {
-                      console.log('PHP Script Response:', response);
-                  
-                      if (response && response.draft_order && response.draft_order.name && response.draft_order.invoice_url) {
-                          localStorage.setItem("draft#", response.draft_order.name);
-                          localStorage.setItem("draft_url", response.draft_order.invoice_url);
-                  
-                          $.ajax({
-                              type: 'POST',
-                              url: '/cart/clear.js',
-                              dataType: 'json',
-                              success: function(response) {
-                                  $(".loading-spinner").hide();
-                                  if (localeCodeValue == 'en') {
-                                      window.location.href = "/en/pages/success";
-                                  } else {
-                                      window.location.href = "/pages/success";
-                                  }
-                              },
-                              error: function (error) {
-                                  console.error('Error clearing cart:', error);
-                                  resetAll();
-                              }
-                          });
-                  
-                      } else {
-                          console.error('Invalid response format or missing draft_order:', response);
-                          alert("Something went wrong with order creation. Please try again.");
-                      }
-                  },
+                    // console.log('PHP Script Response:', response);
+                    localStorage.setItem("draft#", response.draft_order.name);
+                    localStorage.setItem("draft_url", response.draft_order.invoice_url);
 
+                  
+                  
+                    $.ajax({
+                    type: 'POST',
+                    url: '/cart/clear.js',
+                    data: '',
+                    dataType: 'json',
+                    success: function(response) {
+                      $(".loading-spinner").hide();
+                      if(localeCodeValue=='en'){
+                        window.location.href = "/en/pages/success";
+                      }else{
+                        window.location.href = "/pages/success";
+                      }
+                    },
+                    error: function (error) {
+                      console.error('Error:', error);
+                      resetAll();
+                    }
+                  });
+                },
                 error: function (error) {
                     console.error('Error:', error);
                 }
@@ -704,7 +722,7 @@
       }
     });
 
-    // console.log('Selected products array:', selectedProducts); // Log selected products array
+    console.log('Selected products array:', selectedProducts);
 
     addToCart(selectedProducts, defaultProductId);
   });
@@ -1387,7 +1405,8 @@
       "id":"form_11_option_3",
       "label":"Form 11 Option 3",
       "default":"Numéro de téléphone"
-    },{
+    },
+    {
       "type":"text",
       "id":"form_11_option_4",
       "label":"Form 11 Option 4",

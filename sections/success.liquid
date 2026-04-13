@@ -1,0 +1,189 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  div#calendly-embed iframe {
+    min-height: 50rem;
+  }
+{% endstyle %}
+<!--success.liquid  -->
+<div class="section--padding{% if section.settings.show_divider %} section--divider{% endif %}">
+  <div class="success--message page-width">
+    <div class="success--content">
+      {{ section.settings.content }}
+    </div>
+  </div>
+  <div id="calendly-embed"></div>
+  <div>
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
+      <script>
+      // Retrieve values from local storage
+      const isSpa = localStorage.getItem('isSpa') === "true";
+      const spendNights = localStorage.getItem('spendNights') === "true";
+      const isSurgery = localStorage.getItem('isSurgery') === "true";
+      
+      // Select the hidden input field
+      const localeCodeInput = document.querySelector('input[name="locale_code"]');
+      
+      // Get the value of the input field
+      const localeCodeValue = localeCodeInput.value;
+      // Log the value to the console (optional)
+      console.log(localeCodeValue);
+      console.log(isSpa);
+      console.log(spendNights);
+      console.log(isSurgery);
+      function getEmail(){
+        const email = localStorage.getItem('email');
+        return email;
+      }
+      function getName(){
+        const name = localStorage.getItem('name');
+        return name;
+      }
+    
+      // Function to set Calendly URL based on conditions
+      function getCalendlyURL() {
+
+
+        if (!isSpa && spendNights && isSurgery) {
+          if(localeCodeValue=='en'){
+            return 'https://calendly.com/hopital-raplapla/surgery';
+          }else{
+            return 'https://calendly.com/hopital-raplapla/operation';
+          }
+        } else if (isSpa && spendNights && !isSurgery) {
+          if(localeCodeValue=='en'){
+            return 'https://calendly.com/hopital-raplapla/spa-treatment';
+          }else{
+            return 'https://calendly.com/hopital-raplapla/traitement-spa';
+          }
+        } else if (!isSpa && spendNights && isSurgery) {
+          if(localeCodeValue=='en'){
+            return 'https://calendly.com/hopital-raplapla/surgery';
+          }else{
+            return 'https://calendly.com/hopital-raplapla/operation';
+          }
+        } else if (!isSpa && !spendNights && isSurgery) {
+          if(localeCodeValue=='en'){
+            return 'https://calendly.com/hopital-raplapla/same-day-operation';
+          }else{
+            return 'https://calendly.com/hopital-raplapla/operation-jour-meme';
+          }
+        } else if (isSpa && !spendNights && !isSurgery) {
+          if(localeCodeValue=='en'){
+            return 'https://calendly.com/hopital-raplapla/same-day-spa';
+          }else{
+            return 'https://calendly.com/hopital-raplapla/spa-jour-meme';
+          }
+        } else if (!isSpa && !spendNights && isSurgery) {
+          if(localeCodeValue=='en'){
+            return 'https://calendly.com/hopital-raplapla/same-day-operation';
+          }else{
+            return 'https://calendly.com/hopital-raplapla/operation-jour-meme';
+          }
+        }
+        
+        // if (!isSpa && !spendNights) {
+        //   if(localeCodeValue=='en'){
+        //     return 'https://calendly.com/hopital-raplapla/same-day-operation';
+        //   }else{
+        //     return 'https://calendly.com/hopital-raplapla/operation-jour-meme';
+        //   }
+        // } else if (isSpa && !spendNights) {
+        //   if(localeCodeValue=='en'){
+        //     return 'https://calendly.com/hopital-raplapla/same-day-spa';
+        //   }else{
+        //     return 'https://calendly.com/hopital-raplapla/spa-jour-meme';
+        //   }
+        // } else if (isSpa && spendNights) {
+        //   if(localeCodeValue=='en'){
+        //     return 'https://calendly.com/hopital-raplapla/spa-treatment';
+        //   }else{
+        //     return 'https://calendly.com/hopital-raplapla/traitement-spa';
+        //   }
+        // } else if (!isSpa && spendNights) {
+        //   if(localeCodeValue=='en'){
+        //     return 'https://calendly.com/hopital-raplapla/surgery';
+        //   }else{
+        //     return 'https://calendly.com/hopital-raplapla/operation';
+        //   }
+        // }
+          
+        
+        // if (isSpa && spendNights) {
+        //   return 'https://calendly.com/hopital-raplapla/spa-treatment';
+        // } else if (!isSpa && spendNights) {
+        //   return 'https://calendly.com/hopital-raplapla/operation';
+        // } else if (isSpa && !spendNights) {
+        //   return 'https://calendly.com/hopital-raplapla/same-day-spa';
+        // } else {
+        //   return 'https://calendly.com/hopital-raplapla/same-day-operation';
+        // }
+      }
+    
+      // Initialize Calendly with the dynamically determined URL
+      const value = localStorage.getItem('draft#'); 
+      const value2 = localStorage.getItem('draft_url'); 
+      Calendly.initInlineWidget({
+        url: getCalendlyURL(),
+        parentElement: document.getElementById('calendly-embed'),
+        prefill: {
+          email: getEmail(), // Add the default email for the guest here
+          name: getName(), // Add the default email for the guest here
+          customAnswers: {
+              a1: value,
+              a2: value2
+          }
+        }
+      });
+    </script>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Success",
+    "settings": [
+      {
+        "type":"richtext",
+        "id":"content",
+        "label":"Content"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_divider",
+        "default": false,
+        "label": "t:sections.all.show_divider.label"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.all.padding.header.content"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "t:sections.all.padding.padding_top.unit",
+        "label": "t:sections.all.padding.padding_top.label",
+        "default": 36
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "t:sections.all.padding.padding_bottom.unit",
+        "label": "t:sections.all.padding.padding_bottom.label",
+        "default": 36
+      }
+    ],
+    "presets": [
+      {
+        "name": "Success"
+      }
+    ]
+  }
+{% endschema %}

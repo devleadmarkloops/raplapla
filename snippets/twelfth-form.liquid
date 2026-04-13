@@ -1,0 +1,66 @@
+<div
+  id="{{ section.settings.form_12_unique_id }}"
+  class="form-block-wrapper form-block-12 flex-block flex-with-iframe"
+  style="display: none;"
+>
+  <div class="left-block">
+    <div class="left-block-box">
+      <!-- <div class="block-num">12</div> -->
+      <div class="content-box">
+        <p class="ques-text content-heading">
+          {{ section.settings.form_12_question }}
+        </p>
+        <div class="sub-text content-desc">
+          {{ section.settings.form_12_question_description }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="right-block">
+    <div class="img-box callendly--box">
+      {{ section.settings.form_12_calender }}
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button
+      id="backButton10"
+      style="display: block;"
+      class="button"
+      onclick="showPreviousSnippet12('{{ section.settings.form_11_unique_id }}')"
+    >
+       {{ section.settings.back_btn_text }}
+    </button>
+    <button
+      id="nextButton10"
+      style="display: block;"
+      class="button"
+      onclick="showNextSnippet12('{{ section.settings.form_16_unique_id }}')"
+    >
+       {{ section.settings.next_btn_text }}
+    </button>
+  </div>
+</div>
+
+
+<script>
+
+  function showPreviousSnippet12(previousSnippetId) { 
+    const previousSnippet = document.getElementById(previousSnippetId);
+    if (previousSnippet) {
+      previousSnippet.style.display = 'block';
+    }
+
+    const currentSnippet = document.getElementById('{{ section.settings.form_12_unique_id }}');
+    currentSnippet.style.display = 'none';
+  }
+  function showNextSnippet12(NextSnippetId) { 
+    const nextSnippet = document.getElementById(NextSnippetId);
+    if (nextSnippet) {
+      nextSnippet.style.display = 'block';
+    }
+
+    const currentSnippet = document.getElementById('{{ section.settings.form_12_unique_id }}');
+    currentSnippet.style.display = 'none';
+  }
+</script>

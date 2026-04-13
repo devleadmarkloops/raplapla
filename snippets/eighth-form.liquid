@@ -1,0 +1,184 @@
+{% assign product_1 = section.settings.form_8_product %}
+<div id="{{ section.settings.form_8_unique_id }}" class="eighth-form" style="display: none;">
+  <div class="form-block-wrapper form-block-8 form--with--products flex-block">
+    <div class="left-block">
+      <div class="left-block-box">
+        <!-- <div class="block-num">8</div> -->
+        <div class="content-box">
+          <p class="ques-text content-heading">
+            {{ section.settings.form_8_question }}
+          </p>
+          <p class="sub-text content-desc">{{ section.settings.form_8_question_description }}</p>
+          <div class="options-box">
+            {% if section.settings.form_8_option_1 != blank %}
+              <div
+                class="option option1 option--night"
+                data-value="True"
+                data-product-title="{{ product_1.title }}"
+                data-product-id="{{ product_1.variants[0].id }}"
+                data-product-price="{{ product_1.price | money }}"
+                onclick="handleOptionClickForForm8(event, 'why_come_to_hospital', true)"
+              >
+                <span>O</span> {{ section.settings.form_8_option_1 }}
+              </div>
+            {% endif %}
+            {% if section.settings.form_8_option_2 != blank %}
+              <div
+                class="option option1 option--night"
+                data-value="False"
+                data-product-title="{{ product_1.title }}"
+                data-product-id="{{ product_1.variants[0].id }}"
+                data-product-price="{{ product_1.price | money }}"
+                onclick="handleOptionClickForForm8(event, 'why_come_to_hospital', false)"
+              >
+                <span>N</span> {{ section.settings.form_8_option_2 }}
+              </div>
+            {% endif %}
+          </div>
+          <div class="buttons">
+            <button
+              id="backButton8"
+              style="display: block;"
+              class="button"
+              onclick="showPreviousSnippet('toy_size')"
+            >
+               {{ section.settings.back_btn_text }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="right-block">
+      <div class="img-box">
+        <img src="{{ section.settings.form_8_image | image_url }}" alt="Image 8">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const options8 = document.querySelectorAll('.form-block-8 .options-box .option');
+  var nights = '';
+  function handleOptionClickForForm8(event, nextSnippetId, spendNights) {
+    // Remove the 'selected' class from all elements with the class 'option--night'
+    document.querySelectorAll('.option--night').forEach(element => {
+      element.classList.remove('selected');
+    });
+    
+    // Add the 'selected' class to the event's current target
+    event.currentTarget.classList.add('selected');
+    // New Added
+    const currentTargetValue = event.currentTarget.getAttribute('data-value');
+    if (currentTargetValue == 'False'){
+      nights = false;
+      const productTitle = event.currentTarget.getAttribute('data-product-title');
+      const productId = event.currentTarget.getAttribute('data-product-id');
+      const productPrice = event.currentTarget.getAttribute('data-product-price');
+      const productListElement = document.getElementById('product-lists');
+      const selectedProductContainer = document.getElementById('selectedProduct');
+      const listItem = document.createElement('li');
+      const formattedPrice = parseFloat(productPrice).toFixed(2); // Format price to 2 decimal places
+      listItem.innerHTML = `${productTitle}, <strong>${productPrice}</strong>`; // Displaying formatted price
+      productListElement.appendChild(listItem);
+      
+      document.querySelector('.form-block-8').classList.add('form--with--products');
+      
+      // Create hidden input and append it to selectedProduct container
+      const hiddenInput = document.createElement('input');
+      hiddenInput.type = 'hidden';
+      hiddenInput.name = 'selectedProducts[]';
+      hiddenInput.value = productId;
+      selectedProductContainer.appendChild(hiddenInput);
+  
+      // Update total price when an option is selected or deselected
+      updateTotalPrice();
+    }else if (currentTargetValue == 'True'){
+      nights = true;
+      const productId = event.currentTarget.getAttribute('data-product-id');
+      const productTitle = event.currentTarget.getAttribute('data-product-title');
+      const selectedProductContainer = document.getElementById('selectedProduct');
+      const productListElement = document.getElementById('product-lists');
+      const listItems1 = productListElement.querySelectorAll('li');
+      
+      listItems1.forEach(item => {
+        // alert(item.textContent);
+        // alert(productTitle);
+        if (item.textContent.includes(productTitle)) {
+          // alert('item removed');
+          item.remove();
+        }
+      });
+      // alert('s');
+      document.querySelector('.form-block-8').classList.remove('form--with--products');
+      
+      // alert(productId);
+      // Remove hidden input if exists
+      const hiddenInputs = selectedProductContainer.querySelectorAll('input');
+      hiddenInputs.forEach(input => {
+        // alert(input.value);
+        if (input.value === productId) {
+          // alert('removed');
+          input.remove();
+        }
+      });
+      updateTotalPrice();
+    }
+    // New Added End
+    
+    const clickedOptionText = event.currentTarget.textContent.trim().replace(/[A-Z]\s/, '');
+    console.log(clickedOptionText);
+    const snippetId = event.currentTarget.closest('.eighth-form').id;
+
+    const currentSnippet = document.getElementById(snippetId);
+    currentSnippet.style.display = 'none';
+
+    const nextSnippet = document.getElementById(nextSnippetId);
+    if (nextSnippet) {
+      nextSnippet.style.display = 'block';
+    }
+
+    const lineItemId = `line_item-${snippetId}`;
+    // console.log(lineItemId);
+    const inputField = document.getElementById(lineItemId);
+    console.log(inputField);
+    if (inputField) {
+      // alert('found');
+      
+      inputField.value = clickedOptionText;
+      console.log('input'+inputField.value);
+      localStorage.setItem('spendNights', spendNights);
+      const spendNightslocal = localStorage.getItem('spendNights');
+      console.log('local--storage: '+spendNightslocal);
+    }
+  }
+
+  // options8.forEach(option => {
+  //   option.addEventListener('click', function(event) {
+  //     const nextSnippetId = option.dataset.nextSnippetId;
+  //     handleOptionClickForForm8(event, nextSnippetId);
+  //   });
+  // });
+  // function updateDefaultPrice() {
+    
+  // }
+  function showPreviousSnippet(previousSnippetId) {
+    if(option2val == 'raplapla_toy'){
+      // alert('s');
+      const previousSnippet = document.getElementById('{{ section.settings.form_4_unique_id }}');
+      if (previousSnippet) {
+        previousSnippet.style.display = 'block';
+      }
+  
+      const currentSnippet = document.getElementById('{{ section.settings.form_8_unique_id }}');
+      currentSnippet.style.display = 'none';
+    }else{
+      const previousSnippet = document.getElementById(previousSnippetId);
+      if (previousSnippet) {
+        previousSnippet.style.display = 'block';
+      }
+  
+      const currentSnippet = document.getElementById('{{ section.settings.form_8_unique_id }}');
+      currentSnippet.style.display = 'none';
+    }
+  }
+</script>

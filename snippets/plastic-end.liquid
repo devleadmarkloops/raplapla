@@ -1,0 +1,25 @@
+<div id="{{ section.settings.plastic_end_unique_id }}" class="plastic_end end_form" style="display: none;">
+  <div class="form-block-wrapper form-block-24 flex-block flex-center single-form">
+    <div class="plastic_end_text">
+      {{ section.settings.plastic_end_text }}
+    </div>
+  </div>
+  <div class="buttons btn--top--margin">
+    <a style="display: block;" class="button" onclick="showPreviousSnippet31('{{ section.settings.plastic_end_unique_id }}', '{{ section.settings.form_5_unique_id }}')">
+      {{ section.settings.back_btn_text }}
+    </a>
+  </div>
+</div>
+<script>
+  function showPreviousSnippet31(currentSnippetId, previousSnippetId) {
+    const previousSnippet = document.getElementById(previousSnippetId);
+    if (previousSnippet) {
+      previousSnippet.style.display = 'block';
+    }
+
+    const currentSnippet = document.getElementById(currentSnippetId);
+    if (currentSnippet) {
+      currentSnippet.style.display = 'none';
+    }
+  }
+</script>

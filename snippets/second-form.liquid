@@ -1,0 +1,139 @@
+<!--request_concerns form -->
+<div id="{{ section.settings.form_2_unique_id }}" style="display: none;" class="second-form">
+  <div class="form-block-wrapper form-block-2 flex-block">
+    <div class="left-block">
+      <div class="left-block-box">
+        <!-- <div class="block-num">2</div> -->
+        <div class="content-box">
+          <p class="ques-text content-heading">{{ section.settings.form_2_question }}</p>
+          <p class="sub-text content-desc">{{ section.settings.form_2_question_description }}</p>
+          <div class="options-box">
+            {% if section.settings.form_2_option_1 != blank %}
+              <div class="option option1 made_by_raplapla" onclick="handleOptionClickForForm2(event, 'toy_replica')">
+                <span>A</span> {{ section.settings.form_2_option_1 }}
+              </div>
+            {% endif %}
+            {% if section.settings.form_2_option_2 != blank %}
+              <div
+                class="option option1 made_by_brand"
+                onclick="handleOptionClickForForm2(event, 'mechanism_repaired')"
+              >
+                <span>B</span> {{ section.settings.form_2_option_2 }}
+              </div>
+            {% endif %}
+            {% if section.settings.form_2_option_3 != blank %}
+              <div
+                class="option option1"
+                onclick="handleOptionClickForForm2(event, '{{ section.settings.form_2_option_3_next }}')"
+              >
+                <span>C</span> {{ section.settings.form_2_option_3 }}
+              </div>
+            {% endif %}
+            {% if section.settings.form_2_option_4 != blank %}
+              <div
+                class="option option1"
+                onclick="handleOptionClickForForm2(event, '{{ section.settings.form_2_option_4_next }}')"
+              >
+                <span>D</span> {{ section.settings.form_2_option_4 }}
+              </div>
+            {% endif %}
+            {% if section.settings.form_2_option_5 != blank %}
+              <div
+                class="option option1"
+                onclick="handleOptionClickForForm2(event, '{{ section.settings.form_2_option_5_next }}')"
+              >
+                <span>E</span> {{ section.settings.form_2_option_5 }}
+              </div>
+            {% endif %}
+          </div>
+          <div class="buttons">
+            <button
+              id="backButton"
+              style="display: block;"
+              class="button"
+              onclick="showPreviousSnippet2('{{ section.settings.form_2_unique_id }}', '{{ section.settings.form_1_unique_id }}')"
+            >
+                {{ section.settings.back_btn_text }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="right-block">
+      <div class="img-box">
+        <img src="{{ section.settings.form_2_image | image_url }}" alt="Image 2">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var option2val='';
+  const options2 = document.querySelectorAll('.form-block-2 .options-box .option');
+  function handleOptionClickForForm2(event, nextSectionId) {
+    const clickedOptionText = event.currentTarget.textContent.trim().replace(/[A-Z]\s/, '');
+    const snippetId = event.currentTarget.closest('.second-form').id;
+    const lineItemId = `line_item-${snippetId}`;
+
+    const inputField = document.getElementById(lineItemId);
+
+    if (inputField) {
+      inputField.value = clickedOptionText;
+      console.log(inputField.value);
+    }
+
+    options2.forEach(option => {
+      option.classList.remove('selected');
+    });
+    if (event.currentTarget.classList.contains('made_by_raplapla')) {
+      // Find the element with the class 'toy_type'
+      const toyTypeElement = document.querySelector('.toy_type');
+  
+      // Add the class 'raplala_toy' to the found element
+      if (toyTypeElement) {
+        option2val = 'raplapla_toy';
+        console.log(option2val);
+        toyTypeElement.classList.remove('brand_toy');
+        toyTypeElement.classList.add('raplala_toy');
+      }
+    }else if (event.currentTarget.classList.contains('made_by_brand')){
+      // Find the element with the class 'toy_type'
+      const toyTypeElement = document.querySelector('.toy_type');
+      option2val = '';
+      // Add the class 'raplala_toy' to the found element
+      if (toyTypeElement) {
+          toyTypeElement.classList.remove('raplala_toy');
+          toyTypeElement.classList.add('brand_toy');
+      }
+    }
+    event.currentTarget.classList.add('selected');
+    // option2val =event.currentTarget.textContent;
+    // option2val = option2val.replace(/\s/g, '');
+    // console.log(option2val);
+    const nextSnippet = document.getElementById(nextSectionId);
+    const currentSnippet = document.getElementById('{{ section.settings.form_2_unique_id }}');
+    currentSnippet.style.display = 'none';
+
+    if (nextSnippet) {
+      nextSnippet.style.display = 'block';
+    } else {
+      const previousSnippetId = '{{ section.settings.form_1_unique_id }}';
+      const previousSnippet = document.getElementById(previousSnippetId);
+      if (previousSnippet) {
+        previousSnippet.style.display = 'block';
+      }
+    }
+  }
+
+  function showPreviousSnippet2(currentSnippetId, previousSnippetId) {
+    const previousSnippet = document.getElementById(previousSnippetId);
+    if (previousSnippet) {
+      previousSnippet.style.display = 'block';
+    }
+
+    const currentSnippet = document.getElementById(currentSnippetId);
+    if (currentSnippet) {
+      currentSnippet.style.display = 'none';
+    }
+  }
+</script>

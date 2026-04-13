@@ -1,0 +1,77 @@
+<div id="{{ section.settings.form_21_unique_id }}" style="display: none;" class="twentieth-first-form">
+  <div class="form-block-wrapper form-block-21 flex-block flex-center single-form">
+    <div class="left-block">
+      <div class="left-block-box">
+        <!-- <div class="block-num">21</div> -->
+        <div class="content-box">
+          <p class="ques-text content-heading">{{ section.settings.form_21_question }}</p>
+          <div class="options-box">
+            {% if section.settings.form_21_option_1 != blank %}
+              <div class="option option1" onclick="handleOptionClickForForm21(event, 'known_allergies_form')">
+                <span>A</span> {{ section.settings.form_21_option_1 | replace: "'","" }}
+              </div>
+            {% endif %}
+            {% if section.settings.form_21_option_2 != blank %}
+              <div class="option option1" onclick="handleOptionClickForForm21(event, 'known_allergies_form')">
+                <span>B</span> {{ section.settings.form_21_option_2 | replace: "'","" }}
+              </div>
+            {% endif %}
+            {% if section.settings.form_21_option_3 != blank %}
+              <div class="option option1" onclick="handleOptionClickForForm21(event, 'known_allergies_form')">
+                <span>C</span> {{ section.settings.form_21_option_3 | replace: "'","" }}
+              </div>
+            {% endif %}
+            {% if section.settings.form_21_option_4 != blank %}
+              <div class="option option1" onclick="handleOptionClickForForm21(event, 'known_allergies_form')">
+                <span>D</span> {{ section.settings.form_21_option_4 | replace: "'","" }}
+              </div>
+            {% endif %}
+          </div>
+          <div class="buttons">
+            <button
+              id="backButton21"
+              style="display: block;"
+              class="button"
+              onclick="showPreviousSnippet21('need_anesthesia')"
+            >
+              {{ section.settings.back_btn_text }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function handleOptionClickForForm21(event, nextSnippetId) {
+    const clickedOptionText = event.currentTarget.textContent.trim().replace(/[A-Z]\s/, '');
+    const snippetId = event.currentTarget.closest('.twentieth-first-form').id;
+
+    const currentSnippet = document.getElementById(snippetId);
+    currentSnippet.style.display = 'none';
+
+    const nextSnippet = document.getElementById(nextSnippetId);
+    if (nextSnippet) {
+      nextSnippet.style.display = 'block';
+    }
+
+    const lineItemId = `line_item-${snippetId}`;
+    const inputField = document.getElementById(lineItemId);
+
+    if (inputField) {
+      inputField.value = clickedOptionText;
+      console.log(inputField.value);
+    }
+  }
+
+  function showPreviousSnippet21(previousSnippetId) {
+    const previousSnippet = document.getElementById(previousSnippetId);
+    if (previousSnippet) {
+      previousSnippet.style.display = 'block';
+    }
+
+    const currentSnippet = document.getElementById('{{ section.settings.form_21_unique_id }}');
+    currentSnippet.style.display = 'none';
+  }
+</script>

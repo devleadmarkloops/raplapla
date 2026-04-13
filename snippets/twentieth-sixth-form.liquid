@@ -1,0 +1,80 @@
+<div id="{{ section.settings.form_26_unique_id }}" style="display: none;" class="twentieth-sixth-form">
+  <div class="form-block-wrapper form-block-26 flex-block flex-center single-form">
+    <div class="left-block">
+      <div class="left-block-box">
+        <!-- <div class="block-num">26</div> -->
+        <div class="content-box">
+          <p class="ques-text content-heading">{{ section.settings.form_26_question }}</p>
+          <p class="sub-text content-desc">{{ section.settings.form_26_question_description }}</p>
+          <div class="options-box">
+            <form action="">
+              <div class="form-container">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control story"
+                    placeholder="{{ "general.type_form.reply_here_text" | t }}"
+                    autocomplete="name"
+                    id="{{ section.settings.form_26_story_unique_id }}"
+                  >
+                </div>
+              </div>
+              <div class="buttons">
+                <button class="button" type="button" id="backButton26" style="display: block;">{{ section.settings.back_btn_text }}</button>
+                <button class="button" type="button" data-next="add-to-cart-form" id="nextButton26" style="display: block;">{{ section.settings.next_btn_text }}</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function handleInputChange26() {
+    const story = document.querySelector('.story').value;
+    const nextButton26 = document.getElementById('nextButton26');
+
+    if (story.trim() !== '') {
+      nextButton26.style.display = 'block'; // Show the next button when text is typed
+    } else {
+      nextButton26.style.display = 'none'; // Hide the next button when no text is entered
+    }
+  }
+
+  function handleNextClick26() {
+    const storyId = '{{ section.settings.form_26_story_unique_id }}';
+    const story = document.getElementById(storyId).value;
+
+    if (story) {
+      document.getElementById('line_item-' + storyId).value = story;
+      console.log('Form data has been submitted for snippet 26.');
+    } else {
+      console.log('Please fill in the field for snippet 26.');
+    }
+    // Change snippet display - Show the next snippet and hide the current snippet
+    document.getElementById('{{ section.settings.form_26_unique_id }}').style.display = 'none';
+    // Update the ID of the next snippet as per your requirement
+    document.getElementById('add-to-cart-form').style.display = 'block'; // Replace 'nextSnippetId' with the actual ID of the next snippet
+  }
+
+  function showPreviousSnippet26() {
+    const previousSnippetId = 'hospital_visit'; // Replace with the ID of the previous snippet
+    const currentSnippetId = '{{ section.settings.form_26_unique_id }}';
+
+    document.getElementById(previousSnippetId).style.display = 'block';
+    document.getElementById(currentSnippetId).style.display = 'none';
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const storyInput26 = document.querySelector('.story');
+    storyInput26.addEventListener('input', handleInputChange26);
+
+    const nextButton26 = document.getElementById('nextButton26');
+    nextButton26.addEventListener('click', handleNextClick26);
+
+    const backButton26 = document.getElementById('backButton26');
+    backButton26.addEventListener('click', showPreviousSnippet26);
+  });
+</script>

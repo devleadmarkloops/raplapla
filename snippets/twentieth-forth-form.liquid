@@ -1,0 +1,79 @@
+<div id="{{ section.settings.form_24_unique_id }}" style="display: none;" class="twentieth-forth">
+  <div class="form-block-wrapper form-block-24 flex-block flex-center single-form">
+    <div class="left-block">
+      <div class="left-block-box">
+        <!-- <div class="block-num">24</div> -->
+        <div class="content-box">
+          <p class="ques-text content-heading">{{ section.settings.form_24_question }}</p>
+          <p class="sub-text content-desc">{{ section.settings.form_24_question_description }}</p>
+          <div class="options-box">
+            <form action="">
+              <div class="form-container">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control do_not_repair"
+                    placeholder="{{ "general.type_form.reply_here_text" | t }}"
+                    autocomplete="name"
+                    id="{{ section.settings.form_24_do_not_repair_unique_id }}"
+                  >
+                </div>
+              </div>
+              <div class="buttons">
+                <button class="button" type="button" id="backButton24" style="display: block;">{{ section.settings.back_btn_text }}</button>
+                <button class="button" type="button" data-next="{{ section.settings.form_25_unique_id }}" id="nextButton24" style="display: none;">{{ section.settings.next_btn_text }}</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function handleInputChange24() {
+    const doNotRepairValue = document.querySelector('.do_not_repair').value;
+    const nextButton24 = document.getElementById('nextButton24');
+
+    if (doNotRepairValue.trim() !== '') {
+      nextButton24.style.display = 'block'; // Show the next button when text is typed
+    } else {
+      nextButton24.style.display = 'none'; // Hide the next button when no text is entered
+    }
+  }
+
+  function handleNextClick24() {
+    const doNotRepairId = '{{ section.settings.form_24_do_not_repair_unique_id }}';
+    const doNotRepairValue = document.getElementById(doNotRepairId).value;
+
+    if (doNotRepairValue) {
+      document.getElementById('line_item-' + doNotRepairId).value = doNotRepairValue;
+      console.log('Form data has been submitted for snippet 24.');
+    } else {
+      console.log('Please fill in the field for snippet 24.');
+    }
+    // Change snippet display - Show the next snippet and hide the current snippet
+    document.getElementById('{{ section.settings.form_24_unique_id }}').style.display = 'none';
+    document.getElementById('{{ section.settings.form_25_unique_id }}').style.display = 'block'; // Change 'form_22_unique_id' to the next snippet ID
+  }
+
+  function showPreviousSnippet24() {
+    const previousSnippetId = 'known_allergies_form'; // Change this to the previous snippet ID
+    const currentSnippetId = '{{ section.settings.form_24_unique_id }}';
+
+    document.getElementById(previousSnippetId).style.display = 'block';
+    document.getElementById(currentSnippetId).style.display = 'none';
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const doNotRepairInput24 = document.querySelector('.do_not_repair');
+    doNotRepairInput24.addEventListener('input', handleInputChange24);
+
+    const nextButton24 = document.getElementById('nextButton24');
+    nextButton24.addEventListener('click', handleNextClick24);
+
+    const backButton24 = document.getElementById('backButton24');
+    backButton24.addEventListener('click', showPreviousSnippet24);
+  });
+</script>

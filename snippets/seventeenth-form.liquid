@@ -1,0 +1,178 @@
+<div id="{{ section.settings.form_17_unique_id }}" style="display: none;" class="seventeenth-form">
+  <div class="form-block-wrapper form-block-17 flex-block flex-center single-form">
+    <div class="left-block">
+      <div class="left-block-box">
+        <!-- <div class="block-num">17</div> -->
+        <div class="content-box">                 
+          <p class="ques-text content-heading">
+            {{ section.settings.form_17_question }}
+          </p>
+          <div class="options-box">
+            {% if section.settings.form_17_option_1 %}
+              <div
+                class="option option1"
+                onclick="handleOptionClick17(event, '{{ section.settings.form_17_option_1 | replace: "'","" }}')"
+              >
+                <span>A</span> {{ section.settings.form_17_option_1 }}
+              </div>
+            {% endif %}
+            {% if section.settings.form_17_option_2 %}
+              <div
+                class="option option1"
+                onclick="handleOptionClick17(event, '{{ section.settings.form_17_option_2 | replace: "'","" }}')"
+              >
+                <span>B</span> {{ section.settings.form_17_option_2 }}
+              </div>
+            {% endif %}
+            {% if section.settings.form_17_option_3 %}
+              <div
+                class="option option1"
+                onclick="handleOptionClick17(event, '{{ section.settings.form_17_option_3 | replace: "'","" }}')"
+              >
+                <span>C</span> {{ section.settings.form_17_option_3 }}
+              </div>
+            {% endif %}
+            {% if section.settings.form_17_option_4 %}
+              <div
+                class="option option1"
+                onclick="handleOptionClick17(event, '{{ section.settings.form_17_option_4 | replace: "'","" }}')"
+              >                      
+                <span>D</span> {{ section.settings.form_17_option_4 }}
+              </div>
+            {% endif %}
+            {% if section.settings.form_17_option_5 %}
+              <div
+                class="option option1"
+                onclick="handleOptionClick17(event, '{{ section.settings.form_17_option_5 | replace: "'","" }}')"
+              >
+                <span>E</span> {{ section.settings.form_17_option_5 }}
+              </div>
+            {% endif %}
+            {% if section.settings.form_17_option_6 %}
+              <div
+                class="option option1"
+                onclick="handleOptionClick17(event, '{{ section.settings.form_17_option_6 | replace: "'","" }}')"
+              >
+                <span>F</span> {{ section.settings.form_17_option_6 }}
+              </div>
+            {% endif %}
+          </div>
+          <div class="autre-field form-group" style="display: none;">
+            <input
+              type="text"
+              class="form-control"
+              id="autreInput17"
+              placeholder="Enter your autre"
+              oninput="handleAutreInput17()"
+            >
+          </div>
+          <!--
+            <div id="nextButtonWrapper17" class="next-button" style="display: none;">
+              <button
+                id="nextButton17"
+                onclick="showNextSnippet17('need_anesthesia')"
+                class="button"
+              >
+                Next
+              </button>
+            </div>     
+          -->
+          <div class="buttons">
+            <button
+              id="backButton17"
+              class="button"
+              onclick="showPreviousSnippet17('{{ section.settings.form_16_unique_id }}')"
+            >
+              {{ section.settings.back_btn_text }}
+            </button>
+            <button
+              id="nextButton17"
+              onclick="showNextSnippet17('{{ section.settings.form_18_unique_id }}')"
+              class="button"
+              style="display: none;"
+            >
+              {{ section.settings.next_btn_text }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+<script>
+  const options17 = document.querySelectorAll('.form-block-17 .options-box .option');
+  const backButton17 = document.getElementById('backButton17');
+  const nextButton17 = document.getElementById('nextButton17');
+  const autreField17 = document.querySelector('.form-block-17 .autre-field');
+  const autreInput17 = document.getElementById('autreInput17');
+  
+  function handleOptionClick17(event, optionText) {
+    const selectedOption = event.currentTarget;
+
+    options17.forEach(option => {
+      option.classList.remove('selected');
+    });
+
+    selectedOption.classList.add('selected');
+
+    const clickedOptionText = optionText;
+    const lastOptionText = getLastOptionText17();
+    if (clickedOptionText === lastOptionText.trim()) {
+      autreField17.style.display = 'block';
+      nextButton17.style.display = 'none';
+      setLineItemValue17(autreInput17.value);
+    } else {
+      autreField17.style.display = 'none';
+      nextButton17.style.display = 'block';
+      setLineItemValue17(clickedOptionText);
+    }
+  }
+
+  function getLastOptionText17() {
+    const lastOption = options17[options17.length - 1].textContent.trim();
+    const optionTextNew = lastOption.substring(1);
+    return optionTextNew;
+  }
+
+  function handleAutreInput17() {
+    if (autreInput17.value.trim() !== '' && autreField17.style.display === 'block') {
+      nextButton17.style.display = 'block';
+      setLineItemValue17(autreInput17.value);
+    } else {
+      nextButton17.style.display = 'none';
+    }
+  }
+
+  function setLineItemValue17(value) {
+    const currentSnippet17 = document.getElementById('{{ section.settings.form_17_unique_id }}');
+    const snippetId17 = currentSnippet17.id;
+    const lineItemId17 = `line_item-${snippetId17}`;
+    const inputField17 = document.getElementById(lineItemId17);
+
+    if (inputField17) {
+      inputField17.value = value;
+      console.log(inputField17.value);
+    }
+  }
+
+  function showNextSnippet17(nextSnippetId) {
+    const currentSnippet17 = document.getElementById('{{ section.settings.form_17_unique_id }}');
+    currentSnippet17.style.display = 'none';
+
+    const nextSnippet17 = document.getElementById(nextSnippetId);
+    if (nextSnippet17) {
+      nextSnippet17.style.display = 'block';
+    }
+  }
+
+  function showPreviousSnippet17(previousSnippetId) {
+    const previousSnippet17 = document.getElementById(previousSnippetId);
+    if (previousSnippet17) {
+      previousSnippet17.style.display = 'block';
+    }
+
+    const currentSnippet17 = document.getElementById('{{ section.settings.form_17_unique_id }}');
+    currentSnippet17.style.display = 'none';
+  }
+</script>

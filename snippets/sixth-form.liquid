@@ -1,0 +1,126 @@
+<div id="{{ section.settings.form_6_unique_id }}" class="sixth-form" style="display: none;">
+  <div class="form-block-wrapper form-block-6 flex-block">
+    <div class="left-block">
+      <div class="left-block-box">
+        <!-- <div class="block-num">6</div> -->
+        <div class="content-box">
+          <p class="ques-text content-heading">
+            {{ section.settings.form_6_question }}
+          </p>
+          <p class="sub-text content-desc"></p>
+          <div class="options-box">
+            {% if section.settings.form_6_option_1 != blank %}
+              <div
+                class="option option1" data-product="under-forty"
+                onclick="handleOptionClickForForm6(event, '{{ section.settings.form_7_unique_id }}')"
+              >
+                <span>A</span> {{ section.settings.form_6_option_1 }}
+              </div>
+            {% endif %}
+            {% if section.settings.form_6_option_2 != blank %}
+              <div
+                class="option option1" data-product="over-forty"
+                onclick="handleOptionClickForForm6(event, '{{ section.settings.form_7_unique_id }}')"
+              >
+                <span>B</span> {{ section.settings.form_6_option_2 }}
+              </div>
+            {% endif %}
+            {% if section.settings.form_6_option_3 != blank %}
+              <div
+                class="option option1"
+                onclick="handleOptionClickForForm6(event, '{{ section.settings.form_7_unique_id }}')"
+              >
+                <span>C</span> {{ section.settings.form_6_option_3 }}
+              </div>
+            {% endif %}
+            {% if section.settings.form_6_option_4 != blank %}
+              <div
+                class="option option1"
+                onclick="handleOptionClickForForm6(event, '{{ section.settings.form_7_unique_id }}')"
+              >
+                <span>D</span> {{ section.settings.form_6_option_4 }}
+              </div>
+            {% endif %}
+          </div>
+          <div class="buttons">
+            <button
+              id="backButton6"
+              style="display: block;"
+              class="button"
+              onclick="showPreviousSnippet6('toy_material')"
+            >
+               {{ section.settings.back_btn_text }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="right-block">
+      <div class="img-box">
+        <img src="{{ section.settings.form_6_image | image_url }}" alt="Image 6">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const options6 = document.querySelectorAll('.form-block-6 .options-box .option');
+  
+  function handleOptionClickForForm6(event, nextSnippetId) {
+    const clickedOptionText = event.currentTarget.textContent.trim().replace(/[A-Z]\s/, '');
+    const snippetId = event.currentTarget.closest('.sixth-form').id;
+    const dataProduct = event.currentTarget.getAttribute('data-product');
+    const underfortysnippet = document.querySelector('.block--under--forty');
+    const overfortysnippet = document.querySelector('.block--over--forty');
+    const raplalasnippet = document.querySelector('.block--raplala');
+    if (dataProduct == 'under-forty') {
+        if (underfortysnippet) underfortysnippet.style.display = 'block';
+        if (overfortysnippet) overfortysnippet.style.display = 'none';
+        if (raplalasnippet) raplalasnippet.style.display = 'none';
+    }
+    
+    if (dataProduct == 'over-forty') {
+        if (underfortysnippet) underfortysnippet.style.display = 'none';
+        if (overfortysnippet) overfortysnippet.style.display = 'block';
+        if (raplalasnippet) raplalasnippet.style.display = 'none';
+    }
+    const currentSnippet = document.getElementById(snippetId);
+    currentSnippet.style.display = 'none';
+
+    const nextSnippet = document.getElementById(nextSnippetId);
+    if (nextSnippet) {
+      nextSnippet.style.display = 'block';
+    }
+
+    const lineItemId = `line_item-${snippetId}`;
+    const inputField = document.getElementById(lineItemId);
+
+    if (inputField) {
+      inputField.value = clickedOptionText;
+      console.log(inputField.value);
+    }
+  }
+
+  options6.forEach(option => {
+    option.addEventListener('click', function(event) {
+      const nextSnippetId = option.dataset.nextSnippetId;
+      handleOptionClickForForm6(event, nextSnippetId);
+    });
+  });
+
+  function showPreviousSnippet6(previousSnippetId) {
+    const previousSnippet = document.getElementById(previousSnippetId);
+    const underfortysnippet = document.querySelector('.block--under--forty');
+    const overfortysnippet = document.querySelector('.block--over--forty');
+    const raplalasnippet = document.querySelector('.block--raplala');
+    if (previousSnippet) {
+      previousSnippet.style.display = 'block';
+      underfortysnippet.style.display = 'none';
+      overfortysnippet.style.display = 'none';
+      raplalasnippet.style.display = 'block';
+    }
+
+    const currentSnippet = document.getElementById('{{ section.settings.form_6_unique_id }}');
+    currentSnippet.style.display = 'none';
+  }
+</script>

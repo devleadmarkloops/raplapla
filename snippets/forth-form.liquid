@@ -1,0 +1,116 @@
+<div
+  id="{{ section.settings.form_4_unique_id }}"
+  class="forth-form"
+  style="display: none;"
+>
+  <div class="form-block-wrapper form-block-4 flex-block">
+    <div class="left-block">
+      <div class="left-block-box">
+        <!-- <div class="block-num">4</div> -->
+        <div class="content-box">
+          <p class="ques-text content-heading">
+            {{ section.settings.form_4_question }}
+          </p>
+          <p class="sub-text content-desc"></p>
+          <div class="options-box">
+            {% if section.settings.form_4_option_1 != blank %}
+              <div
+                class="option option1"
+                onclick="handleOptionClickForForm4(event, 'replica_end', 'yes')"
+              >
+                <span>O</span> {{ section.settings.form_4_option_1 }}
+              </div>
+            {% endif %}
+            {% if section.settings.form_4_option_2 != blank %}
+              <div
+                class="option option1 toy_type"
+                onclick="handleOptionClickForForm4(event, 'toy_material', 'no')"
+              >
+                <span>N</span> {{ section.settings.form_4_option_2 }}
+              </div>
+            {% endif %}
+          </div>
+          <div class="buttons">
+            <button
+              id="backButton4"
+              style="display: block;"
+              class="button"
+              onclick="showPreviousSnippet4('mechanism_repaired')"
+            >
+               {{ section.settings.back_btn_text }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="right-block">
+      <div class="img-box">
+        <img src="https://cdn.shopify.com/s/files/1/0268/6104/3746/files/4.jpg?v=1702619040" alt="Image 4">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const options4 = document.querySelectorAll('.form-block-4 .options-box .option');
+
+  function handleOptionClickForForm4(event, nextSnippetId, optionval) {
+    const clickedOptionText = event.currentTarget.textContent.trim().replace(/[A-Z]\s/, '');
+    const snippetId = event.currentTarget.closest('.forth-form').id;
+
+    const currentSnippet = document.getElementById(snippetId);
+    currentSnippet.style.display = 'none';
+    if(event.currentTarget.classList.contains('raplala_toy') && optionval == 'no'){
+      // alert('nights');
+      const nextSnippet = document.getElementById('spend_nights_at_hospital');
+        if (nextSnippet) {
+          nextSnippet.style.display = 'block';
+        }
+    }else{
+        const nextSnippet = document.getElementById(nextSnippetId);
+        if (nextSnippet) {
+          nextSnippet.style.display = 'block';
+        }
+    }
+    
+
+    const lineItemId = `line_item-${snippetId}`;
+    const inputField = document.getElementById(lineItemId);
+
+    if (inputField) {
+      inputField.value = clickedOptionText;
+      console.log(inputField.value);
+    }
+  }
+
+  options4.forEach(option => {
+    option.addEventListener('click', function(event) {
+      const nextSnippetId = option.dataset.nextSnippetId;
+      handleOptionClickForForm4(event, nextSnippetId);
+    });
+  });
+
+  function showPreviousSnippet4(previousSnippetId) {
+    // alert('a');
+    // console.log(option2val);
+    if(option2val == 'raplapla_toy'){
+      // alert('raplapla');
+      const previousSnippet = document.getElementById('{{ section.settings.form_2_unique_id }}');
+      if (previousSnippet) {
+        previousSnippet.style.display = 'block';
+      }
+  
+      const currentSnippet = document.getElementById('{{ section.settings.form_4_unique_id }}');
+      currentSnippet.style.display = 'none';
+    }else{
+      const previousSnippet = document.getElementById(previousSnippetId);
+      if (previousSnippet) {
+        previousSnippet.style.display = 'block';
+      }
+  
+      const currentSnippet = document.getElementById('{{ section.settings.form_4_unique_id }}');
+      currentSnippet.style.display = 'none';
+    }
+    
+  }
+</script>

@@ -1,0 +1,282 @@
+<div
+  id="{{ section.settings.form_10_unique_id }}"
+  class="form-block-wrapper form-block-10 flex-block flex-center"
+  style="display: none;"
+>
+  <div class="left-block">
+    <div class="left-block-box">
+      <!-- <div class="block-num">10</div> -->
+      <div class="content-box">
+        <p class="ques-text content-heading">
+          {{ section.settings.form_10_question }}
+        </p>
+        <div class="options-box">
+          <label
+            for="images"
+            class="drop-container"
+            id="dropcontainer"
+          >
+            <div class="file-type-icon">
+              <svg
+                aria-hidden="true"
+                class="cloud"
+                height="68px"
+                viewBox="0 0 92 68"
+                width="92px"
+                style="display: block"
+              >
+                <path
+                  d="M46 .64a27.9 27.9 0 0 1 19.78 8.19 27.78 27.78 0 0 1 8.03 20A19.95 19.95 0 0 1 92 48.63c0 11.04-8.97 20-20 20H23c-12.67 0-23-10.33-23-23a22.94 22.94 0 0 1 18.63-22.46 27.79 27.79 0 0 1 7.56-14.34A27.97 27.97 0 0 1 46 .63zm0 6c-5.64 0-11.26 2.1-15.56 6.4-3.66 3.66-5.96 10.59-6.51 15.34 0 .06.2.06-2.5.32A17.02 17.02 0 0 0 6 45.64c0 9.42 7.58 17 17 17h49c7.8 0 14-6.2 14-14 0-7.81-6.2-14-14-14H67.12v-3.36c0-10.7-1.43-14.1-5.59-18.24-4.32-4.3-9.9-6.4-15.53-6.4z"
+                  fill="rgba(82, 20, 66, 0.3)"
+                  fill-rule="nonzero"
+                ></path>
+              </svg>
+              <svg
+                aria-hidden="true"
+                class="cloud-arrow"
+                height="60px"
+                viewBox="0 0 26 31"
+                width="26px"
+              >
+                <path
+                  d="M13 .53l-2.03 1.89-11 10 4.06 4.44L10 11.42v19.22h6V11.42l5.97 5.44c.03.02 4.06-4.44 4.06-4.44l-11-10c-.4-.36-1.07-1-2.03-1.9z"
+                  fill="rgba(82, 20, 66, 0.3)"
+                  fill-rule="nonzero"
+                ></path>
+              </svg>
+            </div>
+            <span class="drop-title">{{ section.settings.form_10_question_description }}</span>
+            <span class="drop-sub-title">{{ section.settings.form_10_file_size }}</span>
+            <input 
+              type="file" 
+              id="images" 
+              required
+              class="image--file--input"
+              name=""
+              accept=".jpg, .jpeg, .png"
+              multiple                      
+            >
+       
+          </label>
+        </div>
+        <div id="preview-container" style="display:none;">
+          
+          
+        </div>
+        <div class="buttons">
+          <button
+            id="backButton10"
+            style="display: block;"
+            class="button"
+            onclick="showPreviousSnippet10('{{ section.settings.form_9_unique_id }}')"
+          >
+             {{ section.settings.back_btn_text }}
+          </button>
+          <button
+            id="nextButton10"
+            style="display: none;"
+            class="button"
+            onclick="showNextSnippet10('{{ section.settings.form_11_unique_id }}')"
+          >
+             {{ section.settings.next_btn_text }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% assign product_form_id = 'product-form-' | append: section.id %}
+<script>
+  let imageCounter = 0;
+  // var count = 0;
+  function image_url(base64, index, loopIndex) {
+      const imageInputId = document.querySelector('.image--file--input').id;
+      const imageFileInput = document.getElementById('line_item-' + imageInputId);
+      console.log('Id: ',imageFileInput);
+      const form = new FormData();
+      form.append('image', base64 );
+      
+      setTimeout(() => {
+          fetch('https://api.imgbb.com/1/upload?key=611695d20c4e91e371d8eebeb9e7e194', {
+              method: 'POST',
+              body: form
+          }).then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                console.log(data.data.url);
+                const imageContainer = document.createElement('div');
+                imageContainer.dataset.id = 'line_item-images' + loopIndex;
+                imageContainer.id = 'line_item-images' + index;
+                imageContainer.className = 'product-form__input line-item-container line-item-property__field cstm--field--image';
+                imageContainer.style.display = 'none';
+  
+                const label = document.createElement('label');
+                label.className = 'form__label';
+                label.htmlFor = 'line-item-{{ section.id }}-{{ block.id }}';
+                label.textContent = 'Toy Photo ' + loopIndex;
+  
+                const input = document.createElement('input');
+                input.className = 'field form-group__input';
+                input.id = 'line_item-images' + loopIndex;
+                input.type = 'text';
+                input.name = 'properties[Toy Photo ' + loopIndex + ']';
+                input.value = data.data.url;
+                input.setAttribute('form', '{{ product_form_id }}');
+  
+                imageContainer.appendChild(label);
+                imageContainer.appendChild(input);
+  
+                // Append imageContainer directly after the initial div with data-id="line_item-images"
+                const initialImageContainer = document.querySelector('[data-id="line_item-images"]');
+                initialImageContainer.insertAdjacentElement('afterend', imageContainer);
+              
+                // if (imageFileInput.value) {
+                //     imageFileInput.value += ',' + data.data.url;
+                // } else {
+                //     imageFileInput.value = data.data.url;
+                // }
+            }).catch((error) => {
+                console.error('Error:', error);
+            });
+      }, 1000);
+  }
+  function removeImage(event) {
+    // alert('clicked');
+    const imageContainer = event.target.closest('.single--image--cont');
+    const imageId = imageContainer.dataset.id;
+    // alert(imageId);
+    // Remove the image preview container
+    imageContainer.remove();
+  
+    // Remove the hidden input field
+    setTimeout(() => {
+      const hiddenInput = document.querySelector(`#line_item-images${imageId}`);
+      console.log('hidden input',hiddenInput);
+      if (hiddenInput) {
+        hiddenInput.remove();
+      }
+    }, 3000);
+    
+    const finalPreviewId = document.querySelector(`#final--preview-${imageId}`);
+    finalPreviewId.remove();
+    
+    if (document.querySelector('#preview-container').innerHTML.trim() === '') {
+      document.querySelector('#preview-container').style.display = 'none';
+      
+      document.getElementById('nextButton10').style.display = 'none';
+    } else {
+      console.log('The div is not empty.', document.querySelector('#preview-container').innerHTML.trim());
+    }
+  }
+  
+
+  document.getElementById('images').addEventListener('change', function(event) {
+      // const file = event.target.files[0];
+      const files = event.target.files;
+      var customFields = document.querySelectorAll('.cstm--field--image');
+      const previewContainer = document.getElementById('preview-container');
+      const imagePreviewContainer = document.getElementById('image-preview-container');
+      previewContainer.style.display = 'none';
+      const imageInputId = document.querySelector('.image--file--input').id;
+      var imageslabel = document.querySelector('.label--for--images');
+      console.log(imageInputId);
+      // Clear any previous preview
+      // previewContainer.innerHTML = '';
+      // Clear any previous appended container
+      const previousContainers = document.querySelectorAll('.final-image-preview');
+      // previousContainers.forEach(container => container.remove());
+      customFields.forEach(function(element) {
+        element.remove();
+      });
+      Array.from(files).forEach((file, index) => {
+          // alert('multiple');
+        if (file) {
+          imageslabel.style.display = 'block';
+          const reader = new FileReader();
+          const imageFileInput = document.getElementById('line_item-' + imageInputId);
+          reader.onload = function(e) {
+              previewContainer.style.display = 'flex';
+            
+              const imagediv = document.createElement('div');
+              imagediv.classList.add('single--image--cont');
+              previewContainer.appendChild(imagediv);
+              const crossButton = document.createElement('button');
+            
+              crossButton.textContent = 'X';
+              count = ++imageCounter;
+              const img = document.createElement('img');
+              img.src = e.target.result;
+              img.classList.add('img--preview');
+              img.alt = 'Image preview';
+              img.dataset.id = count;
+              crossButton.onclick = removeImage;
+              imagediv.appendChild(crossButton);
+              imagediv.appendChild(img);
+              imagediv.dataset.id = count;
+              
+              // Create a container for the image and label
+              const container = document.createElement('div');
+              container.classList.add('final-image-preview');
+              
+              // Append the image to the container
+              const imgClone = img.cloneNode(true);
+              container.appendChild(imgClone);
+              // container.dataset.id = ++imageCounter;
+              container.id = 'final--preview-' + count;
+            
+              imagePreviewContainer.appendChild(container);
+              if (imageFileInput) {
+                base64String = reader.result.replace("data:", "")
+                    .replace(/^.+,/, "");
+          
+                imageBase64Stringsep = base64String;
+                // alert(base64String);
+                // image_url(base64String, index + 1);
+              }
+          };
+  
+          reader.readAsDataURL(file);
+      } else {
+          // Clear the preview if no file is selected
+          previewContainer.innerHTML = '';
+          imageslabel.style.display = 'none';
+      }
+    });
+  });
+    
+  document.getElementById('images').addEventListener('change', function() {
+      var nextButton = document.getElementById('nextButton10');
+      if (this.files && this.files.length > 0) {
+          nextButton.style.display = 'block';
+      } else {
+          nextButton.style.display = 'none';
+      }
+  });
+  function showPreviousSnippet10(previousSnippetId) { 
+    const previousSnippet = document.getElementById(previousSnippetId);
+    if (previousSnippet) {
+      previousSnippet.style.display = 'block';
+    }
+
+    const currentSnippet = document.getElementById('{{ section.settings.form_10_unique_id }}');
+    currentSnippet.style.display = 'none';
+  }
+  function showNextSnippet10(NextSnippetId) { 
+    let images = document.querySelectorAll('#preview-container img');
+    images.forEach((image , loopIndex) => {
+        base64String = image.src.replace("data:", "")
+                    .replace(/^.+,/, "");
+        imageBase64Stringsep = base64String;
+        // alert(base64String);
+        var index = image.dataset.id;
+        image_url(base64String, index , loopIndex + 1 );
+    });
+    const nextSnippet = document.getElementById(NextSnippetId);
+    if (nextSnippet) {
+      nextSnippet.style.display = 'block';
+    }
+
+    const currentSnippet = document.getElementById('{{ section.settings.form_10_unique_id }}');
+    currentSnippet.style.display = 'none';
+  }
+</script>

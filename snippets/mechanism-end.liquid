@@ -1,0 +1,25 @@
+<div id="{{ section.settings.mechanism_end_unique_id }}" class="mechanism_end end_form" style="display: none;">
+  <div class="form-block-wrapper form-block-24 flex-block flex-center single-form">
+    <div class="mechanism_end_text">
+      {{ section.settings.mechanism_end_text }}
+    </div>
+  </div>
+  <div class="buttons btn--top--margin">
+    <a style="display: block;" class="button" onclick="showPreviousSnippet27('{{ section.settings.mechanism_end_unique_id }}', 'mechanism_repaired')">
+      {{ section.settings.back_btn_text }}
+    </a>
+  </div>
+</div>
+<script>
+  function showPreviousSnippet27(currentSnippetId, previousSnippetId) {
+    const previousSnippet = document.getElementById(previousSnippetId);
+    if (previousSnippet) {
+      previousSnippet.style.display = 'block';
+    }
+
+    const currentSnippet = document.getElementById(currentSnippetId);
+    if (currentSnippet) {
+      currentSnippet.style.display = 'none';
+    }
+  }
+</script>

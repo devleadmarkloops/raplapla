@@ -1,0 +1,78 @@
+<div class="twentieth-form" id="{{ section.settings.form_20_unique_id }}" style="display: none;">
+  <div class="form-block-wrapper form-block-20 flex-block flex-center single-form">
+    <div class="left-block">
+      <div class="left-block-box">
+        <!-- <div class="block-num">20</div> -->
+        <div class="content-box">
+          <p class="ques-text content-heading">
+            {{ section.settings.form_20_question }}
+          </p>
+          <div class="options-box">
+            {% if section.settings.form_20_option_1 != blank %}
+              <div class="option option1" onclick="handleOptionClickForForm20(event, 'travel_by_mail')">
+                <span>O</span> {{ section.settings.form_20_option_1 }}
+              </div>
+            {% endif %}
+            {% if section.settings.form_20_option_2 != blank %}
+              <div class="option option1" onclick="handleOptionClickForForm20(event, 'travel_by_mail')">
+                <span>N</span> {{ section.settings.form_20_option_2 }}
+              </div>
+            {% endif %}
+          </div>
+          <div class="buttons">
+            <button
+              id="backButton20"
+              style="display: block;"
+              class="button"
+              onclick="showPreviousSnippet20('gender')"
+            >
+              {{ section.settings.back_btn_text }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const options20 = document.querySelectorAll('.form-block-20 .options-box .option');
+
+  function handleOptionClickForForm20(event, nextSnippetId) {
+    const clickedOptionText = event.currentTarget.textContent.trim().replace(/[A-Z]\s/, '');
+    const snippetId = event.currentTarget.closest('.twentieth-form').id;
+
+    const currentSnippet = document.getElementById(snippetId);
+    currentSnippet.style.display = 'none';
+
+    const nextSnippet = document.getElementById(nextSnippetId);
+    if (nextSnippet) {
+      nextSnippet.style.display = 'block';
+    }
+
+    const lineItemId = `line_item-${snippetId}`;
+    const inputField = document.getElementById(lineItemId);
+
+    if (inputField) {
+      inputField.value = clickedOptionText;
+      console.log(inputField.value);
+    }
+  }
+
+  options20.forEach(option => {
+    option.addEventListener('click', function(event) {
+      const nextSnippetId = option.dataset.nextSnippetId;
+      handleOptionClickForForm20(event, nextSnippetId);
+    });
+  });
+
+  function showPreviousSnippet20(previousSnippetId) {
+    const previousSnippet = document.getElementById(previousSnippetId);
+    if (previousSnippet) {
+      previousSnippet.style.display = 'block';
+    }
+
+    const currentSnippet = document.getElementById('{{ section.settings.form_20_unique_id }}');
+    currentSnippet.style.display = 'none';
+  }
+</script>

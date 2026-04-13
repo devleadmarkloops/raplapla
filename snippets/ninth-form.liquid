@@ -1,0 +1,1022 @@
+{% comment %} By default Under 40 Products for option 1,2,3,4 {% endcomment %}
+{% assign product_1_2_3_4_variants_over_forty = section.settings.form_9_option_1234_product_over_forty.variants %}
+
+{% assign product_1_over_forty = product_1_2_3_4_variants_over_forty[0] %}
+{% assign product_2_over_forty = product_1_2_3_4_variants_over_forty[1] %}
+{% assign product_3_over_forty = product_1_2_3_4_variants_over_forty[2] %}
+{% assign product_4_over_forty = product_1_2_3_4_variants_over_forty[2] %}
+
+{% comment %} By default Under 40 Products for option 1,2,3,4 {% endcomment %}
+{% assign product_1_2_3_4_variants_under_forty = section.settings.form_9_option_1234_product_under_forty.variants %}
+
+{% assign product_1_under_forty = product_1_2_3_4_variants_under_forty[0] %}
+{% assign product_2_under_forty = product_1_2_3_4_variants_under_forty[1] %}
+{% assign product_3_under_forty = product_1_2_3_4_variants_under_forty[2] %}
+{% assign product_4_under_forty = product_1_2_3_4_variants_under_forty[2] %}
+
+{% comment %} By default Raplala Products for option 1,2,3,4 {% endcomment %}
+{% assign product_1_2_3_4_variants_raplala = section.settings.form_9_option_1234_product_raplala.variants %}
+
+{% assign product_1_raplala = product_1_2_3_4_variants_raplala[0] %}
+{% assign product_2_raplala = product_1_2_3_4_variants_raplala[1] %}
+{% assign product_3_raplala = product_1_2_3_4_variants_raplala[2] %}
+{% assign product_4_raplala = product_1_2_3_4_variants_raplala[2] %}
+
+{% comment %} Old Products {% endcomment %}
+{% assign product_1_2_3_4_variants = section.settings.form_9_option_1234_product.variants %}
+
+
+{% for variant in product_1_2_3_4_variants.variants %}
+  {% if variant.title contains 'under 40' %}
+ 
+  {% endif %}
+{% endfor %}
+{% assign product_1 = product_1_2_3_4_variants[0] %}
+{% assign product_2 = product_1_2_3_4_variants[1] %}
+{% assign product_3 = product_1_2_3_4_variants[2] %}
+{% assign product_4 = product_1_2_3_4_variants[3] %}
+
+{% assign product_5 = section.settings.form_9_option_5_product %}
+
+{% assign product_5_brand = section.settings.form_9_option_5_product_brand %}
+
+<!-- Product 6, 7, 8  -->
+{% assign product_6_7_8_raplala_variants = section.settings.form_9_option_6_7_8_product_raplala.variants %}
+{% assign product_6_7_8_under_40_variants = section.settings.form_9_option_6_7_8_product_under_40.variants %}
+{% assign product_6_7_8_over_40_variants = section.settings.form_9_option_6_7_8_product_over_40.variants %}
+<!-- Raplala options  -->
+{% assign product_6_7_8_raplala = product_6_7_8_raplala_variants[0] %}
+{% assign product_6_7_8_raplala_one = product_6_7_8_raplala_variants[1] %}
+{% assign product_6_7_8_raplala_two = product_6_7_8_raplala_variants[2] %}
+<!-- Under 40 options -->
+{% assign product_6_7_8_under_40_one = product_6_7_8_under_40_variants[0] %}
+{% assign product_6_7_8_under_40_two = product_6_7_8_under_40_variants[1] %}
+{% assign product_6_7_8_under_40_three = product_6_7_8_under_40_variants[2] %}
+{% assign product_6_7_8_under_40_four = product_6_7_8_under_40_variants[3] %}
+{% assign product_6_7_8_under_40_five = product_6_7_8_under_40_variants[4] %}
+{% assign product_6_7_8_under_40_six = product_6_7_8_under_40_variants[5] %}
+{% assign product_6_7_8_under_40_seven = product_6_7_8_under_40_variants[6] %}
+{% assign product_6_7_8_under_40_eight = product_6_7_8_under_40_variants[7] %}
+{% assign product_6_7_8_under_40_nine = product_6_7_8_under_40_variants[8] %}
+{% assign product_6_7_8_under_40_ten = product_6_7_8_under_40_variants[9] %}
+{% assign product_6_7_8_under_40_eleven = product_6_7_8_under_40_variants[10] %}
+{% assign product_6_7_8_under_40_twelve = product_6_7_8_under_40_variants[11] %}
+
+<!-- Over 40 options  -->
+{% assign product_6_7_8_over_40_one = product_6_7_8_over_40_variants[0] %}
+{% assign product_6_7_8_over_40_two = product_6_7_8_over_40_variants[1] %}
+{% assign product_6_7_8_over_40_three = product_6_7_8_over_40_variants[2] %}
+{% assign product_6_7_8_over_40_four = product_6_7_8_over_40_variants[3] %}
+{% assign product_6_7_8_over_40_five = product_6_7_8_over_40_variants[4] %}
+{% assign product_6_7_8_over_40_six = product_6_7_8_over_40_variants[5] %}
+{% assign product_6_7_8_over_40_seven = product_6_7_8_over_40_variants[6] %}
+{% assign product_6_7_8_over_40_eight = product_6_7_8_over_40_variants[7] %}
+{% assign product_6_7_8_over_40_nine = product_6_7_8_over_40_variants[8] %}
+{% assign product_6_7_8_over_40_ten = product_6_7_8_over_40_variants[9] %}
+{% assign product_6_7_8_over_40_eleven = product_6_7_8_over_40_variants[10] %}
+{% assign product_6_7_8_over_40_twelve = product_6_7_8_over_40_variants[11] %}
+
+
+<!--Product 9, 10, 11, 12 new  -->
+{% assign product_9_10_11_12_variants_raplapla = section.settings.form_9_option_9_10_11_12_product_raplapla.variants %}
+{% assign product_9_10_11_12_variants_under_forty = section.settings.form_9_option_9_10_11_12_product_under_40.variants %}
+{% assign product_9_10_11_12_variants_over_forty = section.settings.form_9_option_9_10_11_12_product_over_40.variants %}
+
+{% assign product_9_raplapla = product_9_10_11_12_variants_raplapla[0] %}
+{% assign product_10_raplapla = product_9_10_11_12_variants_raplapla[1] %}
+{% assign product_11_raplapla = product_9_10_11_12_variants_raplapla[2] %}
+{% assign product_12_raplapla = product_9_10_11_12_variants_raplapla[3] %}
+
+{% assign product_9_under_40 = product_9_10_11_12_variants_under_forty[0] %}
+{% assign product_10_under_40 = product_9_10_11_12_variants_under_forty[1] %}
+{% assign product_11_under_40 = product_9_10_11_12_variants_under_forty[2] %}
+{% assign product_12_under_40 = product_9_10_11_12_variants_under_forty[3] %}
+
+{% assign product_9_over_40 = product_9_10_11_12_variants_over_forty[0] %}
+{% assign product_10_over_40 = product_9_10_11_12_variants_over_forty[1] %}
+{% assign product_11_over_40 = product_9_10_11_12_variants_over_forty[2] %}
+{% assign product_12_over_40 = product_9_10_11_12_variants_over_forty[3] %}
+
+<!--Product 13, 14, 15, 16 new  -->
+{% assign product_13_14_15_16_variants_raplapla = section.settings.form_9_option_13_14_15_16_product_raplapla.variants %}
+{% assign product_13_14_15_16_variants_under_forty = section.settings.form_9_option_13_14_15_16_product_under_40.variants %}
+{% assign product_13_14_15_16_variants_over_forty = section.settings.form_9_option_13_14_15_16_product_over_40.variants %}
+
+{% assign product_13_raplapla = product_13_14_15_16_variants_raplapla[0] %}
+{% assign product_14_raplapla = product_13_14_15_16_variants_raplapla[1] %}
+{% assign product_15_raplapla = product_13_14_15_16_variants_raplapla[2] %}
+{% assign product_16_raplapla = product_13_14_15_16_variants_raplapla[3] %}
+
+{% assign product_13_under_40 = product_13_14_15_16_variants_under_forty[0] %}
+{% assign product_14_under_40 = product_13_14_15_16_variants_under_forty[1] %}
+{% assign product_15_under_40 = product_13_14_15_16_variants_under_forty[2] %}
+{% assign product_16_under_40 = product_13_14_15_16_variants_under_forty[3] %}
+
+{% assign product_13_over_40 = product_13_14_15_16_variants_over_forty[0] %}
+{% assign product_14_over_40 = product_13_14_15_16_variants_over_forty[1] %}
+{% assign product_15_over_40 = product_13_14_15_16_variants_over_forty[2] %}
+{% assign product_16_over_40 = product_13_14_15_16_variants_over_forty[3] %}
+<!-- Product 6, 7, 8 old  -->
+{% assign product_6_11_variants = section.settings.form_9_option_6_11_product.variants %}
+{% assign product_6 = product_6_11_variants[0] %}
+{% assign product_11 = product_6_11_variants[1] %}
+
+{% assign product_7 = section.settings.form_9_option_7_product %}
+
+{% assign product_8_9_10_variants = section.settings.form_9_option_8_9_10_product.variants %}
+{% assign product_8 = product_8_9_10_variants[0] %}
+{% assign product_9 = product_8_9_10_variants[1] %}
+{% assign product_10 = product_8_9_10_variants[2] %}
+
+{% assign product_12_13_14_15_variants = section.settings.form_9_option_12_13_14_15_product.variants %}
+{% assign product_12 = product_12_13_14_15_variants[0] %}
+{% assign product_13 = product_12_13_14_15_variants[1] %}
+{% assign product_14 = product_12_13_14_15_variants[2] %}
+{% assign product_15 = product_12_13_14_15_variants[3] %}
+
+<div
+  id="{{ section.settings.form_9_unique_id }}"
+  class="form-block-wrapper form-block-9 form--with--products flex-block flex-center option-box-v2"
+  style="display: none;"
+>
+  <div class="left-block block--raplala">
+    <div class="left-block-box">
+      <!-- <div class="block-num">9</div> -->
+      <div class="content-box">
+        <p class="ques-text content-heading">
+          {{ section.settings.form_9_question }}
+        </p>
+        <div class="options-box">
+          <p class="sub-text small-desc">
+            {{ section.settings.form_9_question_description }}
+          </p>
+          <!-- Assign products -->
+          <div
+            class="option option1"
+            data-product-title="{{ product_1_raplala.title }}-{{ product_1_raplala.variant.title }}"
+            data-product-id="{{ product_1_raplala.id }}"
+            data-product-price="{{ product_1_raplala.price | money }}"
+          >
+            <span>A</span> {{ section.settings.form_9_option_1 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_2_raplala.title }}-{{ product_2_raplala.variant.title }}"
+            data-product-id="{{ product_2_raplala.id }}"
+            data-product-price="{{ product_2_raplala.price | money }}"
+          >
+            <span>B</span> {{ section.settings.form_9_option_2 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_3_raplala.title }}-{{ product_3_raplala.variant.title }}"
+            data-product-id="{{ product_3_raplala.id }}"
+            data-product-price="{{ product_3_raplala.price | money }}"
+          >
+            <span>C</span> {{ section.settings.form_9_option_3 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_4_raplala.title }}-{{ product_4_raplala.variant.title }}"
+            data-product-id="{{ product_4_raplala.id }}"
+            data-product-price="{{ product_4_raplala.price | money }}"
+          >
+            <span>D</span> {{ section.settings.form_9_option_4 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_5.title }} - {{ product_5.selected_or_first_available_variant.title }}"
+            data-product-id="{{ product_5.selected_or_first_available_variant.id }}"
+            data-product-price="{{ product_5.price | money }}"
+          >
+            <span>E</span> {{ section.settings.form_9_option_5 }}
+          </div>
+          <div
+            class="option option1 isspa"
+            data-product-title="{{ product_6_7_8_raplala.title }}"
+            data-product-id="{{ product_6_7_8_raplala.id }}"
+            data-product-price="{{ product_6_7_8_raplala.price | money }}"
+          >
+            <span>F</span> {{ section.settings.form_9_option_6 }}
+          </div>
+          <div
+            class="option option1 isspa"
+            data-product-title="{{ product_6_7_8_raplala_one.title }}"
+            data-product-id="{{ product_6_7_8_raplala_one.id }}"
+            data-product-price="{{ product_6_7_8_raplala_one.price | money }}"
+          >
+            <span>G</span> {{ section.settings.form_9_option_7 }}
+          </div>
+          <!-- <div
+            class="option option1"
+            data-product-title="{{ product_7.title }}"
+            data-product-id="{{ product_7.selected_or_first_available_variant.id }}"
+            data-product-price="{{ product_7.price | money }}"
+          >
+            <span>G</span> {{ section.settings.form_9_option_7 }} 
+          </div> -->
+          <!--
+            <div class="option option1" data-product-title="{{ product_8.title }}" data-product-id="{{ product_8.id }}">
+                <span>H</span> {{ section.settings.form_9_option_8 }}
+            </div>
+          -->
+          <div
+            class="option option1 isspa"
+            data-product-title="{{ product_6_7_8_raplala_two.title }}"
+            data-product-id="{{ product_6_7_8_raplala_two.id }}"
+            data-product-price="{{ product_6_7_8_raplala_two.price | money }}"
+          >
+            <span>H</span> {{ section.settings.form_9_option_8 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_9_raplapla.title }}-{{ product_9_raplapla.variant.title }}"
+            data-product-id="{{ product_9_raplapla.id }}"
+            data-product-price="{{ product_9_raplapla.price | money }}"
+          >
+            <span>I</span> {{ section.settings.form_9_option_9 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_10_raplapla.title }}-{{ product_10_raplapla.variant.title }}"
+            data-product-id="{{ product_10_raplapla.id }}"
+            data-product-price="{{ product_10_raplapla.price | money }}"
+          >
+            <span>J</span> {{ section.settings.form_9_option_10 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_11_raplapla.title }}-{{ product_11_raplapla.variant.title }}"
+            data-product-id="{{ product_11_raplapla.id }}"
+            data-product-price="{{ product_11_raplapla.price | money }}"
+          >
+            <span>K</span> {{ section.settings.form_9_option_11 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_12_raplapla.title }}-{{ product_12_raplapla.variant.title }}"
+            data-product-id="{{ product_12_raplapla.id }}"
+            data-product-price="{{ product_12_raplapla.price | money }}"
+          >
+            <span>L</span> {{ section.settings.form_9_option_12 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_13_raplapla.title }}-{{ product_13_raplapla.variant.title }}"
+            data-product-id="{{ product_13_raplapla.id }}"
+            data-product-price="{{ product_13_raplapla.price | money }}"
+          >
+            <span>M</span> {{ section.settings.form_9_option_13 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_14_raplapla.title }}-{{ product_14_raplapla.variant.title }}"
+            data-product-id="{{ product_14_raplapla.id }}"
+            data-product-price="{{ product_14_raplapla.price | money }}"
+          >
+            <span>N</span> {{ section.settings.form_9_option_14 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_15_raplapla.title }}-{{ product_15_raplapla.variant.title }}"
+            data-product-id="{{ product_15_raplapla.id }}"
+            data-product-price="{{ product_15_raplapla.price | money }}"
+          >
+            <span>O</span> {{ section.settings.form_9_option_15 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_16_raplapla.title }}-{{ product_16_raplapla.variant.title }}"
+            data-product-id="{{ product_16_raplapla.id }}"
+            data-product-price="{{ product_16_raplapla.price | money }}"
+          >
+            <span>O</span> {{ section.settings.form_9_option_16 }}
+          </div>
+        </div>
+        <div>
+          <p class="est--price">Estimated Price: <span id="total--price">0</span></p>
+        </div>
+        <div class="buttons">
+          <button class="back-btn button" style="display: block;"> {{ section.settings.back_btn_text }}</button>
+          <button class="next-btn button" data-next="{{ section.settings.form_10_unique_id }}"  style="display: none;">{{ section.settings.next_btn_text }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="left-block block--under--forty" style="display:none;">
+    <div class="left-block-box">
+      <!-- <div class="block-num">9</div> -->
+      <div class="content-box">
+        <p class="ques-text content-heading">
+          {{ section.settings.form_9_question }}
+        </p>
+        <div class="options-box">
+          <p class="sub-text small-desc">
+            {{ section.settings.form_9_question_description }}
+          </p>
+          <!-- Assign products -->
+          <div
+            class="option option1"
+            data-product-title="{{ product_1_under_forty.title }}-{{ product_1_under_forty.variant.title }}"
+            data-product-id="{{ product_1_under_forty.id }}"
+            data-product-price="{{ product_1_under_forty.price | money }}"
+          >
+            <span>A</span> {{ section.settings.form_9_option_1 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_2_under_forty.title }}-{{ product_2_under_forty.variant.title }}"
+            data-product-id="{{ product_2_under_forty.id }}"
+            data-product-price="{{ product_2_under_forty.price | money }}"
+          >
+            <span>B</span> {{ section.settings.form_9_option_2 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_3_under_forty.title }}-{{ product_3_under_forty.variant.title }}"
+            data-product-id="{{ product_3_under_forty.id }}"
+            data-product-price="{{ product_3_under_forty.price | money }}"
+          >
+            <span>C</span> {{ section.settings.form_9_option_3 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_4_under_forty.title }}-{{ product_4_under_forty.variant.title }}"
+            data-product-id="{{ product_4_under_forty.id }}"
+            data-product-price="{{ product_4_under_forty.price | money }}"
+          >
+            <span>D</span> {{ section.settings.form_9_option_4 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_5_brand.title }} - {{ product_5_brand.selected_or_first_available_variant.title }}"
+            data-product-id="{{ product_5_brand.selected_or_first_available_variant.id }}"
+            data-product-price="{{ product_5_brand.price | money }}"
+          >
+            <span>E</span> {{ section.settings.form_9_option_5 }}
+          </div>
+          <div
+            class="option option1 under--forty--product isspa" data-underforty="1"
+            data-product-title="{{ product_6_7_8_under_40_one.title }}-{{ product_6_7_8_under_40_one.variant.title }}"
+            data-product-id="{{ product_6_7_8_under_40_one.id }}"
+            data-product-price="{{ product_6_7_8_under_40_one.price | money }}"
+          >
+            <span>F</span> {{ section.settings.form_9_option_6 }}
+          </div>
+          
+          <div
+            class="option option1 under--forty--product isspa" data-underforty="2"
+            data-product-title="{{ product_6_7_8_under_40_two.title }}-{{ product_6_7_8_under_40_two.variant.title }}"
+            data-product-id="{{ product_6_7_8_under_40_two.id }}"
+            data-product-price="{{ product_6_7_8_under_40_two.price | money }}"
+          >
+            <span>F</span> {{ section.settings.form_9_option_6 }}
+          </div>
+          
+          <div
+            class="option option1 under--forty--product isspa" data-underforty="3"
+            data-product-title="{{ product_6_7_8_under_40_three.title }}-{{ product_6_7_8_under_40_three.variant.title }}"
+            data-product-id="{{ product_6_7_8_under_40_three.id }}"
+            data-product-price="{{ product_6_7_8_under_40_three.price | money }}"
+          >
+            <span>F</span> {{ section.settings.form_9_option_6 }}
+          </div>
+          
+          <div
+            class="option option1 under--forty--product isspa" data-underforty="1"
+            data-product-title="{{ product_6_7_8_under_40_four.title }}-{{ product_6_7_8_under_40_four.variant.title }}"
+            data-product-id="{{ product_6_7_8_under_40_four.id }}"
+            data-product-price="{{ product_6_7_8_under_40_four.price | money }}"
+          >
+            <span>G</span> {{ section.settings.form_9_option_7 }}
+          </div>
+          
+          <div
+            class="option option1 under--forty--product isspa" data-underforty="2"
+            data-product-title="{{ product_6_7_8_under_40_five.title }}-{{ product_6_7_8_under_40_five.variant.title }}"
+            data-product-id="{{ product_6_7_8_under_40_five.id }}"
+            data-product-price="{{ product_6_7_8_under_40_five.price | money }}"
+          >
+            <span>G</span> {{ section.settings.form_9_option_7 }}
+          </div>
+          
+          <div
+            class="option option1 under--forty--product isspa" data-underforty="3"
+            data-product-title="{{ product_6_7_8_under_40_six.title }}-{{ product_6_7_8_under_40_six.variant.title }}"
+            data-product-id="{{ product_6_7_8_under_40_six.id }}"
+            data-product-price="{{ product_6_7_8_under_40_six.price | money }}"
+          >
+            <span>G</span> {{ section.settings.form_9_option_7 }}
+          </div>
+          
+          <div
+            class="option option1 under--forty--product isspa" data-underforty="1"
+            data-product-title="{{ product_6_7_8_under_40_seven.title }}-{{ product_6_7_8_under_40_seven.variant.title }}"
+            data-product-id="{{ product_6_7_8_under_40_seven.id }}"
+            data-product-price="{{ product_6_7_8_under_40_seven.price | money }}"
+          >
+            <span>H</span> {{ section.settings.form_9_option_8 }}
+          </div>
+          
+          <div
+            class="option option1 under--forty--product isspa" data-underforty="2"
+            data-product-title="{{ product_6_7_8_under_40_eight.title }}-{{ product_6_7_8_under_40_eight.variant.title }}"
+            data-product-id="{{ product_6_7_8_under_40_eight.id }}"
+            data-product-price="{{ product_6_7_8_under_40_eight.price | money }}"
+          >
+            <span>H</span> {{ section.settings.form_9_option_8 }}
+          </div>
+          
+          <div
+            class="option option1 under--forty--product isspa" data-underforty="3"
+            data-product-title="{{ product_6_7_8_under_40_nine.title }}-{{ product_6_7_8_under_40_nine.variant.title }}"
+            data-product-id="{{ product_6_7_8_under_40_nine.id }}"
+            data-product-price="{{ product_6_7_8_under_40_nine.price | money }}"
+          >
+            <span>H</span> {{ section.settings.form_9_option_8 }}
+          </div>
+         
+          <div
+            class="option option1"
+            data-product-title="{{ product_9_under_40.title }}-{{ product_9_under_40.variant.title }}"
+            data-product-id="{{ product_9_under_40.id }}"
+            data-product-price="{{ product_9_under_40.price | money }}"
+          >
+            <span>I</span> {{ section.settings.form_9_option_9 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_10_under_40.title }}-{{ product_10_under_40.variant.title }}"
+            data-product-id="{{ product_10_under_40.id }}"
+            data-product-price="{{ product_10_under_40.price | money }}"
+          >
+            <span>J</span> {{ section.settings.form_9_option_10 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_11_under_40.title }}-{{ product_11_under_40.variant.title }}"
+            data-product-id="{{ product_11_under_40.id }}"
+            data-product-price="{{ product_11_under_40.price | money }}"
+          >
+            <span>K</span> {{ section.settings.form_9_option_11 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_12_under_40.title }}-{{ product_12_under_40.variant.title }}"
+            data-product-id="{{ product_12_under_40.id }}"
+            data-product-price="{{ product_12_under_40.price | money }}"
+          >
+            <span>L</span> {{ section.settings.form_9_option_12 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_13_under_40.title }}-{{ product_13_under_40.variant.title }}"
+            data-product-id="{{ product_13_under_40.id }}"
+            data-product-price="{{ product_13_under_40.price | money }}"
+          >
+            <span>M</span> {{ section.settings.form_9_option_13 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_14_under_40.title }}-{{ product_14_under_40.variant.title }}"
+            data-product-id="{{ product_14_under_40.id }}"
+            data-product-price="{{ product_14_under_40.price | money }}"
+          >
+            <span>N</span> {{ section.settings.form_9_option_14 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_15_under_40.title }}-{{ product_15_under_40.variant.title }}"
+            data-product-id="{{ product_15_under_40.id }}"
+            data-product-price="{{ product_15_under_40.price | money }}"
+          >
+            <span>O</span> {{ section.settings.form_9_option_15 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_16_under_40.title }}-{{ product_16_under_40.variant.title }}"
+            data-product-id="{{ product_16_under_40.id }}"
+            data-product-price="{{ product_16_under_40.price | money }}"
+          >
+            <span>O</span> {{ section.settings.form_9_option_16 }}
+          </div>
+        </div>
+        <div>
+          <p class="est--price">Estimated Price: <span id="total--price1">0</span></p>
+        </div>
+        <div class="buttons">
+          <button class="back-btn button" style="display: block;"> {{ section.settings.back_btn_text }}</button>
+          <button class="next-btn button" data-next="{{ section.settings.form_10_unique_id }}"  style="display: none;">{{ section.settings.next_btn_text }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="left-block block--over--forty" style="display:none;">
+    <div class="left-block-box">
+      <!-- <div class="block-num">9</div> -->
+      <div class="content-box">
+        <p class="ques-text content-heading">
+          {{ section.settings.form_9_question }}
+        </p>
+        <div class="options-box">
+          <p class="sub-text small-desc">
+            {{ section.settings.form_9_question_description }}
+          </p>
+          <!-- Assign products -->
+          <div
+            class="option option1"
+            data-product-title="{{ product_1_over_forty.title }}-{{ product_1_over_forty.variant.title }}"
+            data-product-id="{{ product_1_over_forty.id }}"
+            data-product-price="{{ product_1_over_forty.price | money }}"
+          >
+            <span>A</span> {{ section.settings.form_9_option_1 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_2_over_forty.title }}-{{ product_2_over_forty.variant.title }}"
+            data-product-id="{{ product_2_over_forty.id }}"
+            data-product-price="{{ product_2_over_forty.price | money }}"
+          >
+            <span>B</span> {{ section.settings.form_9_option_2 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_3_over_forty.title }}-{{ product_3_over_forty.variant.title }}"
+            data-product-id="{{ product_3_over_forty.id }}"
+            data-product-price="{{ product_3_over_forty.price | money }}"
+          >
+            <span>C</span> {{ section.settings.form_9_option_3 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_4_over_forty.title }}-{{ product_4_over_forty.variant.title }}"
+            data-product-id="{{ product_4_over_forty.id }}"
+            data-product-price="{{ product_4_over_forty.price | money }}"
+          >
+            <span>D</span> {{ section.settings.form_9_option_4 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_5_brand.title }} - {{ product_5_brand.selected_or_first_available_variant.title }}"
+            data-product-id="{{ product_5_brand.selected_or_first_available_variant.id }}"
+            data-product-price="{{ product_5_brand.price | money }}"
+          >
+            <span>E</span> {{ section.settings.form_9_option_5 }}
+          </div>
+          <div
+            class="option option1 under--forty--product isspa" data-underforty="1"
+            data-product-title="{{ product_6_7_8_over_40_one.title }}-{{ product_6_7_8_over_40_one.variant.title }}"
+            data-product-id="{{ product_6_7_8_over_40_one.id }}"
+            data-product-price="{{ product_6_7_8_over_40_one.price | money }}"
+          >
+            <span>F</span> {{ section.settings.form_9_option_6 }}
+          </div>
+          
+          <div
+            class="option option1 under--forty--product isspa" data-underforty="2"
+            data-product-title="{{ product_6_7_8_over_40_two.title }}-{{ product_6_7_8_over_40_two.variant.title }}"
+            data-product-id="{{ product_6_7_8_over_40_two.id }}"
+            data-product-price="{{ product_6_7_8_over_40_two.price | money }}"
+          >
+            <span>F</span> {{ section.settings.form_9_option_6 }}
+          </div>
+          
+          <div
+            class="option option1 under--forty--product isspa" data-underforty="3"
+            data-product-title="{{ product_6_7_8_over_40_three.title }}-{{ product_6_7_8_over_40_three.variant.title }}"
+            data-product-id="{{ product_6_7_8_over_40_three.id }}"
+            data-product-price="{{ product_6_7_8_over_40_three.price | money }}"
+          >
+            <span>F</span> {{ section.settings.form_9_option_6 }}
+          </div>
+          
+          <div
+            class="option option1 under--forty--product isspa" data-underforty="1"
+            data-product-title="{{ product_6_7_8_over_40_four.title }}-{{ product_6_7_8_over_40_four.variant.title }}"
+            data-product-id="{{ product_6_7_8_over_40_four.id }}"
+            data-product-price="{{ product_6_7_8_over_40_four.price | money }}"
+          >
+            <span>G</span> {{ section.settings.form_9_option_7 }}
+          </div>
+          
+          <div
+            class="option option1 under--forty--product isspa" data-underforty="2"
+            data-product-title="{{ product_6_7_8_over_40_five.title }}-{{ product_6_7_8_over_40_five.variant.title }}"
+            data-product-id="{{ product_6_7_8_over_40_five.id }}"
+            data-product-price="{{ product_6_7_8_over_40_five.price | money }}"
+          >
+            <span>G</span> {{ section.settings.form_9_option_7 }}
+          </div>
+          
+          <div
+            class="option option1 under--forty--product isspa" data-underforty="3"
+            data-product-title="{{ product_6_7_8_over_40_six.title }}-{{ product_6_7_8_over_40_six.variant.title }}"
+            data-product-id="{{ product_6_7_8_over_40_six.id }}"
+            data-product-price="{{ product_6_7_8_over_40_six.price | money }}"
+          >
+            <span>G</span> {{ section.settings.form_9_option_7 }}
+          </div>
+          
+          <div
+            class="option option1 under--forty--product isspa" data-underforty="1"
+            data-product-title="{{ product_6_7_8_over_40_seven.title }}-{{ product_6_7_8_over_40_seven.variant.title }}"
+            data-product-id="{{ product_6_7_8_over_40_seven.id }}"
+            data-product-price="{{ product_6_7_8_over_40_seven.price | money }}"
+          >
+            <span>H</span> {{ section.settings.form_9_option_8 }}
+          </div>
+          
+          <div
+            class="option option1 under--forty--product isspa" data-underforty="2"
+            data-product-title="{{ product_6_7_8_over_40_eight.title }}-{{ product_6_7_8_over_40_eight.variant.title }}"
+            data-product-id="{{ product_6_7_8_over_40_eight.id }}"
+            data-product-price="{{ product_6_7_8_over_40_eight.price | money }}"
+          >
+            <span>H</span> {{ section.settings.form_9_option_8 }}
+          </div>
+          
+          <div
+            class="option option1 under--forty--product isspa" data-underforty="3"
+            data-product-title="{{ product_6_7_8_over_40_nine.title }}-{{ product_6_7_8_over_40_nine.variant.title }}"
+            data-product-id="{{ product_6_7_8_over_40_nine.id }}"
+            data-product-price="{{ product_6_7_8_over_40_nine.price | money }}"
+          >
+            <span>H</span> {{ section.settings.form_9_option_8 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_9_over_40.title }}-{{ product_9_over_40.variant.title }}"
+            data-product-id="{{ product_9_over_40.id }}"
+            data-product-price="{{ product_9_over_40.price | money }}"
+          >
+            <span>I</span> {{ section.settings.form_9_option_9 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_10_over_40.title }}-{{ product_10_over_40.variant.title }}"
+            data-product-id="{{ product_10_over_40.id }}"
+            data-product-price="{{ product_10_over_40.price | money }}"
+          >
+            <span>J</span> {{ section.settings.form_9_option_10 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_11_over_40.title }}-{{ product_11_over_40.variant.title }}"
+            data-product-id="{{ product_11_over_40.id }}"
+            data-product-price="{{ product_11_over_40.price | money }}"
+          >
+            <span>K</span> {{ section.settings.form_9_option_11 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_12_over_40.title }}-{{ product_12_over_40.variant.title }}"
+            data-product-id="{{ product_12_over_40.id }}"
+            data-product-price="{{ product_12_over_40.price | money }}"
+          >
+            <span>L</span> {{ section.settings.form_9_option_12 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_13_over_40.title }}-{{ product_13_over_40.variant.title }}"
+            data-product-id="{{ product_13_over_40.id }}"
+            data-product-price="{{ product_13_over_40.price | money }}"
+          >
+            <span>M</span> {{ section.settings.form_9_option_13 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_14_over_40.title }}-{{ product_14_over_40.variant.title }}"
+            data-product-id="{{ product_14_over_40.id }}"
+            data-product-price="{{ product_14_over_40.price | money }}"
+          >
+            <span>N</span> {{ section.settings.form_9_option_14 }}
+          </div>
+          <div
+            class="option option1"
+            data-product-title="{{ product_15_over_40.title }}-{{ product_15_over_40.variant.title }}"
+            data-product-id="{{ product_15_over_40.id }}"
+            data-product-price="{{ product_15_over_40.price | money }}"
+          >
+            <span>O</span> {{ section.settings.form_9_option_15 }}
+          </div>
+
+          <div
+            class="option option1"
+            data-product-title="{{ product_16_over_40.title }}-{{ product_16_over_40.variant.title }}"
+            data-product-id="{{ product_16_over_40.id }}"
+            data-product-price="{{ product_16_over_40.price | money }}"
+          >
+            <span>O</span> {{ section.settings.form_9_option_16 }}
+          </div>
+        </div>
+        <div>
+          <p class="est--price">Estimated Price: <span id="total--price2">0</span></p>
+        </div>
+        <div class="buttons">
+          <button class="back-btn button" style="display: block;"> {{ section.settings.back_btn_text }}</button>
+          <button class="next-btn button" data-next="{{ section.settings.form_10_unique_id }}"  style="display: none;">{{ section.settings.next_btn_text }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+<div id="calender_selector" style="display: none;"></div>
+<script>
+  // Function to handle Back button click
+  localStorage.removeItem("isSpa");
+  localStorage.removeItem("isSurgery");
+  document.querySelectorAll('.back-btn').forEach(function(button) {
+    button.addEventListener('click', function() {
+      document.getElementById('sumPrice').textContent = '';
+      document.getElementById('total--price').textContent = '';
+      document.getElementById('total--price1').textContent = '';
+      document.getElementById('total--price2').textContent = '';
+      const selectedOptions = document.querySelectorAll('.form-block-9 .option1.selected');
+      selectedOptions.forEach((option) => {
+        option.classList.remove('selected');
+      });
+      const productListElement = document.getElementById('product-lists');
+      const items = productListElement.querySelectorAll('li');
+      const selectedProductContainer = document.getElementById('selectedProduct');
+      items.forEach(item => {
+          productListElement.removeChild(item);
+      });
+
+      // Remove hidden input if exists
+      const hiddenInputs = selectedProductContainer.querySelectorAll('input');
+      hiddenInputs.forEach(input => {
+          input.remove();
+      });
+      const currentSnippet = document.getElementById('{{ section.settings.form_9_unique_id }}');
+      const previousSnippet = document.getElementById('{{ section.settings.form_8_unique_id }}');
+  
+      if (previousSnippet) {
+        previousSnippet.style.display = 'block';
+      }
+  
+      if (currentSnippet) {
+        currentSnippet.style.display = 'none';
+      }
+    });
+  });
+  // Function to handle Next button click
+  document.querySelectorAll('.next-btn').forEach(function(button) {
+    button.addEventListener('click', function() {
+    const selectedOptions = document.querySelectorAll('.form-block-9 .option1.selected');
+    const calenderSelector = document.getElementById('calender_selector');
+  
+    let isMentionedOptionSelected = false;
+    let isNonMentionedOptionSelected = false;
+  
+    // Check each selected option
+    selectedOptions.forEach((option) => {
+      const productTitle = option.getAttribute('data-product-title');
+  
+      // Your specified conditions
+      // if (
+      //   productTitle.includes('graft') ||
+      //   productTitle === 'bath / toy under 40 / less than 50 cm-' ||
+      //   productTitle === 'bain / jouet de moins de 40 ans / moins de 50 cm-' ||
+      //   productTitle === "greffe d'un membre / jouet de moins de 40 ans-" ||
+      //   productTitle === "double greffe / jouet de moins de 40 ans-" ||
+      //   productTitle === "triple greffe / jouet de moins de 40 ans-" ||
+      //   productTitle === "quadruple greffe et plus / jouet de moins de 40 ans-" ||
+      //   productTitle === "graft of one limb / toy over 40-" ||
+      //   productTitle === "double graft / toy over 40-" ||
+      //   productTitle === "triple graft / toy over 40-" ||
+      //   productTitle === "quadruple graft (or more) / toy over 40-"
+      // ) {
+      //   isMentionedOptionSelected = true;
+      // } else {
+      //   isNonMentionedOptionSelected = true;
+      // }
+      if (option.classList.contains('isspa')) {
+        isMentionedOptionSelected = true;
+      } else {
+        isNonMentionedOptionSelected = true;
+      }
+    });
+  
+    // Update the calender_selector text based on the conditions
+    if (isMentionedOptionSelected && isNonMentionedOptionSelected) {
+      calenderSelector.textContent = 'Spa / Surgery'; // Change this line with your text for both scenarios
+      localStorage.setItem('isSurgery', true);
+      localStorage.setItem('isSpa', false);
+    } else if (isMentionedOptionSelected) {
+      calenderSelector.textContent = 'Spa'; // Change this line with your text for mentioned option
+      localStorage.setItem('isSpa', isMentionedOptionSelected);
+      localStorage.setItem('isSurgery', false);
+    } else {
+      calenderSelector.textContent = 'Surgery'; // Change this line with your text for non-mentioned option
+      localStorage.setItem('isSurgery', isNonMentionedOptionSelected);
+      localStorage.setItem('isSpa', false);
+    }
+      
+      const isSpaLocal = localStorage.getItem("isSpa");
+      console.log('local--storage--isSpa: '+isSpaLocal);
+      const isSurgeryLocal = localStorage.getItem("isSurgery");
+      console.log('local--storage--isSurgery: '+isSurgeryLocal);
+      const isNight = localStorage.getItem("spendNights");
+      console.log('local--storage--isNight: '+isNight);
+      
+      const currentSnippet = document.getElementById('{{ section.settings.form_9_unique_id }}');
+      const nextSnippet = document.getElementById('{{ section.settings.form_10_unique_id }}');
+  
+      if (nextSnippet) {
+        nextSnippet.style.display = 'block';
+      }
+  
+      if (currentSnippet) {
+        currentSnippet.style.display = 'none';
+      }
+    });
+  });
+
+    // Function to handle click event for options
+  function handleClick9(event) {
+    const productTitle = event.currentTarget.getAttribute('data-product-title');
+    const productId = event.currentTarget.getAttribute('data-product-id');
+    const productPrice = event.currentTarget.getAttribute('data-product-price');
+    const productListElement = document.getElementById('product-lists');
+    var nextButton = '';
+    const selectedProductContainer = document.getElementById('selectedProduct');
+    // Find the closest .options-box container
+    const optionsBox = event.target.closest('.options-box');
+    if (optionsBox) {
+        // Find the next sibling that is .buttons container
+        var buttonsContainer = optionsBox.nextElementSibling;
+        buttonsContainer = buttonsContainer.nextElementSibling;
+        if (buttonsContainer && buttonsContainer.classList.contains('buttons')) {
+            // Find the .next-btn inside the .buttons container
+            nextButton = buttonsContainer.querySelector('.next-btn');
+
+            if (nextButton) {
+                // Handle the next button click or perform other actions
+                console.log('Next button found:', nextButton);
+                // Example action: nextButton.click();
+            } else {
+                console.log('Next button not found inside the .buttons container');
+            }
+        } else {
+            console.log('.buttons container not found next to the .options-box');
+        }
+    } else {
+        console.log('.options-box not found');
+    }
+    if (event.currentTarget.classList.contains('selected')) {
+      // Remove from the product list if already selected
+      const items = productListElement.querySelectorAll('li');
+      items.forEach(item => {
+        // alert('a');
+        if (item.textContent.includes(productTitle)) {
+          productListElement.removeChild(item);
+          // alert('s');
+        }
+      });
+
+      // Remove hidden input if exists
+      const hiddenInputs = selectedProductContainer.querySelectorAll('input');
+      hiddenInputs.forEach(input => {
+        if (input.value === productId) {
+          input.remove();
+        }
+      });
+
+      event.currentTarget.classList.remove('selected');
+
+      // Check if any option is selected to show/hide Next button
+      const selectedOptions = document.querySelectorAll('.form-block-9 .option1.selected');
+      if (selectedOptions.length === 0) {
+        nextButton.style.display = 'none'; // Hide Next button if no option is selected,
+        
+      }
+    } else {
+      // Add to the product list if not selected
+      const listItem = document.createElement('li');
+      const formattedPrice = parseFloat(productPrice).toFixed(2); // Format price to 2 decimal places
+      listItem.innerHTML = `${productTitle}, <strong>${productPrice}</strong>`; // Displaying formatted price
+      productListElement.appendChild(listItem);
+      event.currentTarget.classList.add('selected');
+
+      // Create hidden input and append it to selectedProduct container
+      const hiddenInput = document.createElement('input');
+      hiddenInput.type = 'hidden';
+      hiddenInput.name = 'selectedProducts[]';
+      hiddenInput.value = productId;
+      selectedProductContainer.appendChild(hiddenInput);
+      // alert('show-btn');
+      // Show Next button when an option is selected
+      nextButton.style.display = 'block';
+    }
+
+    // Update total price when an option is selected or deselected
+    updateTotalPrice();
+  }
+
+  // Add click event listeners to all options
+  document.querySelectorAll('.form-block-9 .option1').forEach(option => {
+    option.addEventListener('click', handleClick9);
+  });
+
+  // Function to update the total price
+  function updateTotalPrice() {
+  const selectedProducts = document.querySelectorAll('.form--with--products .option1.selected');
+  let totalPrice = 0;
+  let symbol = '';
+  let defsymbol = '';
+    
+  var defaultProduct = document.getElementById('defaultProduct');
+  var defaultProductPrice = defaultProduct.getAttribute('data-product-price');
+  const defsymbolMatch = defaultProductPrice.match(/[^\d.,\s]+/);
+  defsymbol = defsymbolMatch ? defsymbolMatch[0] : '';
+  // if(nights==true){
+    
+  // }
+  // Remove the currency symbol and other non-numeric characters
+  let defproductPriceString = defaultProductPrice.replace(defsymbol, '').trim();
+  console.log(`Default Price without Symbol: ${defproductPriceString}`);
+  totalPrice = parseFloat(defproductPriceString);
+  console.log(`Default Total Price: ${totalPrice}`);
+  symbol = defsymbol;
+  selectedProducts.forEach(product => {
+    const productPriceWithSymbol = product.getAttribute('data-product-price');
+    console.log(`Raw Price: ${productPriceWithSymbol}`);
+    // Extract the non-numeric symbol
+    const symbolMatch = productPriceWithSymbol.match(/[^\d.,\s]+/);
+    symbol = symbolMatch ? symbolMatch[0] : '';
+    
+    // Log the original price with symbol
+    console.log(`Raw Price: ${productPriceWithSymbol}`);
+    console.log(`Symbol: ${symbol}`);
+    
+    // Remove the currency symbol and other non-numeric characters
+    let productPriceString = productPriceWithSymbol.replace(symbol, '').trim();
+    console.log(`Price without Symbol: ${productPriceString}`);
+    // Ensure the comma is a thousands separator and the dot is a decimal separator
+    if (symbol === 'Rs') {
+       productPriceString = productPriceString.replace(/,/g, '');
+      // Replace the last dot with a decimal point if any
+      const lastDotIndex = productPriceString.lastIndexOf('.');
+      if (lastDotIndex !== -1) {
+        productPriceString = productPriceString.slice(0, lastDotIndex).replace(/\./g, '') + '.' + productPriceString.slice(lastDotIndex + 1);
+      }
+    }else{
+       // productPriceString = productPriceString;
+      productPriceString = productPriceString.replace(/,/g, '.');
+    }
+    
+    
+    // Log the cleaned price string
+    // alert(`Cleaned Price String: ${productPriceString}`);
+    
+    const productPrice = parseFloat(productPriceString);
+  
+    if (isNaN(productPrice)) {
+      console.error(`Invalid price format for product: ${productPriceWithSymbol}`);
+    } else {
+      // alert(`Product Price: ${productPrice}`);
+      // console.log(`Symbol: ${symbol}`);
+      totalPrice += productPrice;
+      // console.log(`Total Price: ${totalPrice}`);
+    }
+  });
+  // let formattedTotalPrice = ''; // Format total price with 2 decimal places
+
+  if (symbol === 'Rs') {
+    var formattedTotalPrice = totalPrice.toFixed(2);
+    // For Rupees (Rs), use comma as thousands separator and dot as decimal separator
+    formattedTotalPrice = formattedTotalPrice.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    document.getElementById('sumPrice').textContent = symbol + '. ' + formattedTotalPrice;
+    document.getElementById('total--price').textContent = symbol + '. ' + formattedTotalPrice;
+    document.getElementById('total--price1').textContent = symbol + '. ' + formattedTotalPrice;
+    document.getElementById('total--price2').textContent = symbol + '. ' + formattedTotalPrice;
+    console.log(formattedTotalPrice);
+  } else {
+    // alert('else');
+    var formattedTotalPrice = totalPrice;
+    // For other currencies, use dot as thousands separator and comma as decimal separator
+    // formattedTotalPrice = formattedTotalPrice.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    // formattedTotalPrice = formattedTotalPrice.replace('.', ',');
+    document.getElementById('sumPrice').textContent = symbol + '' + formattedTotalPrice;
+    document.getElementById('total--price').textContent = symbol + '' + formattedTotalPrice;
+    document.getElementById('total--price1').textContent = symbol + '' + formattedTotalPrice;
+    document.getElementById('total--price2').textContent = symbol + '' + formattedTotalPrice;
+    console.log(formattedTotalPrice);
+  }
+  
+  
+}
+
+  // Check if any option is initially selected to show/hide Next button on load
+  window.addEventListener('load', function() {
+    const selectedOptions = document.querySelectorAll('.form-block-9 .option1.selected');
+    const nextButton = document.querySelector('.next-btn');
+
+    if (selectedOptions.length > 0) {
+      nextButton.style.display = 'block'; // Show Next button if any option is already selected on page load
+    }
+  });
+</script>

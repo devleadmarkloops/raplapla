@@ -1,0 +1,120 @@
+<div
+  id="{{ section.settings.form_23_unique_id }}"
+  class="form-block-wrapper form-block-23 flex-block flex-center multi-form-v2"
+  style="display: none;"
+>
+  <div class="left-block">
+    <div class="left-block-box">
+      <div class="block-num">23</div>
+      <div class="content-box">
+        <p class="ques-text content-heading">
+          {{ section.settings.form_23_question }}
+        </p>
+        <p class="sub-text content-desc"></p>
+        <div class="options-box">
+          <form id="form23" action="">
+            <div class="form-container">
+              <div class="form-group">
+                <label for="firstname">{{ section.settings.form_23_option_1 }}</label>
+                <input
+                  type="text"
+                  class="form-control address_line_1"
+                  placeholder="65 Hanso Way"
+                  id="{{ section.settings.form_23_address_line_1_id }}"
+                >
+              </div>
+              <div class="form-group">
+                <label for="lastname">{{ section.settings.form_23_option_2 }}</label>
+                <input
+                  type="text"
+                  class="form-control address_line_2"
+                  placeholder="Appartment 4"
+                  id="{{ section.settings.form_23_address_line_2_id }}"
+                >
+              </div>
+              <div class="form-group">
+                <label for="lastname">{{ section.settings.form_23_option_3 }}</label>
+                <input
+                  type="text"
+                  class="form-control city"
+                  placeholder="Palo Alto"
+                  id="{{ section.settings.form_23_city_id }}"
+                >
+              </div>
+              <div class="form-group">
+                <label for="lastname">{{ section.settings.form_23_option_4 }}</label>
+                <input
+                  type="text"
+                  class="form-control region_province"
+                  placeholder="California"
+                  id="{{ section.settings.form_23_region_province_id }}"
+                >
+              </div>
+              <div class="form-group">
+                <label for="lastname">{{ section.settings.form_23_option_5 }}</label>
+                <input
+                  type="number"
+                  class="form-control postal_code"
+                  placeholder="94304"
+                  id="{{ section.settings.form_23_postal_code_id }}"
+                >
+              </div>
+              <div class="form-group">
+                <label for="lastname">{{ section.settings.form_23_option_6 }}</label>
+                <input
+                  type="text"
+                  class="form-control country"
+                  placeholder="United States"
+                  id="{{ section.settings.form_23_country_id }}"
+                >
+              </div>
+            </div>
+            <button class="button" type="button" id="submitButton23">{{ section.settings.submit_btn_text }}</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const submitButton23 = document.getElementById('submitButton23');
+
+    submitButton23.addEventListener('click', function() {
+      const addressLine1Class = 'address_line_1';
+      const addressLine2Class = 'address_line_2';
+      const cityClass = 'city';
+      const provinceRegionClass = 'region_province';
+      const postalCodeClass = 'postal_code';
+      const countryClass = 'country';
+
+      const addressLine1Field = document.querySelector('.' + addressLine1Class);
+      const addressLine2Field = document.querySelector('.' + addressLine2Class);
+      const cityField = document.querySelector('.' + cityClass);
+      const provinceRegionField = document.querySelector('.' + provinceRegionClass);
+      const postalCodeField = document.querySelector('.' + postalCodeClass);
+      const countryField = document.querySelector('.' + countryClass);
+
+      const addressLine1 = addressLine1Field.value;
+      const addressLine2 = addressLine2Field.value;
+      const city = cityField.value;
+      const provinceRegion = provinceRegionField.value;
+      const postalCode = postalCodeField.value;
+      const country = countryField.value;
+
+      if (addressLine1 && addressLine2 && city && provinceRegion && postalCode && country) {
+        document.getElementById('line_item-' + addressLine1Class).value = addressLine1;
+        document.getElementById('line_item-' + addressLine2Class).value = addressLine2;
+        document.getElementById('line_item-' + cityClass).value = city;
+        document.getElementById('line_item-' + provinceRegionClass).value = provinceRegion;
+        document.getElementById('line_item-' + postalCodeClass).value = postalCode;
+        document.getElementById('line_item-' + countryClass).value = country;
+
+        alert('Form data has been submitted for snippet 23.');
+      } else {
+        alert('Please fill in all fields for snippet 23.');
+      }
+    });
+  });
+</script>

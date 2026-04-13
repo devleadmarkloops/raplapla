@@ -1,0 +1,17 @@
+h3 {
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+}
+
+.tcustomizer__divider--body {
+    border-top: 1px solid #D2D5D9;
+}
+
+hr {
+  border: none;
+  height: 0.1rem;
+  background-color: rgb(var(--color-border));
+  display: block;
+  margin: 5rem 0;
+}

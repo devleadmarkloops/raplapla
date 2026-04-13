@@ -292,9 +292,44 @@
           >
             <span>O</span> {{ section.settings.form_9_option_16 }}
           </div>
+          
+         {% comment %} CROSS SELL PRODUCTS {% endcomment %}
+          
+          {% assign cross_sell_products = settings.cross_sell_products %}
+          
+          <div class="cross--sell-products">
+            <h2 class="h2 center">{{ 'general.type_form.cross_sell_head' | t }}</h2>
+            <div class="cross-sell--parent">
+              {% for product in cross_sell_products %}
+              {% assign variant = product.selected_or_first_available_variant %}
+
+                <div
+                  class="option option1 cross-sell--product {% unless product.available and variant.available %}is-disabled{% endunless %}"
+                  data-product-title="{{ product.title }}"
+                  data-product-id="{{ variant.id }}"
+                  data-product-price="{{ product.price | money }}"
+                >
+                  <div class="product_img">
+                    <img
+                      src="{{ product.featured_image | image_url: width: 100 }}"
+                      srcset="{{ product.featured_image | image_url: width: 100 }} 1x, {{ product.featured_image | image_url: width: 200 }} 2x"
+                      width="100"
+                      height="100"
+                      alt="{{ product.title | escape }}"
+                    >
+                  </div>
+                  <h5 class="h5 center">
+                    {{ product.title }}
+                  </h5>
+                <p class="pricey">{{ product.price | money }}</p>
+                </div>
+              {% endfor %}  
+            </div>
+          </div>
+          
         </div>
         <div>
-          <p class="est--price">Estimated Price: <span id="total--price">0</span></p>
+          <p class="est--price">{{ 'general.type_form.estemate_price_text' | t }}: <span id="total--price">0</span></p>
         </div>
         <div class="buttons">
           <button class="back-btn button" style="display: block;"> {{ section.settings.back_btn_text }}</button>
@@ -501,9 +536,41 @@
           >
             <span>O</span> {{ section.settings.form_9_option_16 }}
           </div>
+          {% comment %} CROSS SELL PRODUCTS {% endcomment %}
+          
+          {% assign cross_sell_products = settings.cross_sell_products %}
+           <div class="cross--sell-products">
+            <h2 class="h2 center">{{ 'general.type_form.cross_sell_head' | t }}</h2>
+            <div class="cross-sell--parent">
+              {% for product in cross_sell_products %}
+              {% assign variant = product.selected_or_first_available_variant %}
+
+                <div
+                  class="option option1 cross-sell--product {% unless product.available and variant.available %}is-disabled{% endunless %}"
+                  data-product-title="{{ product.title }}"
+                  data-product-id="{{ variant.id }}"
+                  data-product-price="{{ product.price | money }}"
+                >
+                  <div class="product_img">
+                    <img
+                      src="{{ product.featured_image | image_url: width: 100 }}"
+                      srcset="{{ product.featured_image | image_url: width: 100 }} 1x, {{ product.featured_image | image_url: width: 200 }} 2x"
+                      width="100"
+                      height="100"
+                      alt="{{ product.title | escape }}"
+                    >
+                  </div>
+                  <h5 class="h5 center">
+                    {{ product.title }}
+                  </h5>
+                <p class="pricey">{{ product.price | money }}</p>
+                </div>
+              {% endfor %}  
+            </div>
+          </div>
         </div>
         <div>
-          <p class="est--price">Estimated Price: <span id="total--price1">0</span></p>
+          <p class="est--price below__fortyz">{% comment %}Estimated Price:{% endcomment %} {{ 'general.type_form.estemate_price_text' | t }}:<span id="total--price1">0</span></p>
         </div>
         <div class="buttons">
           <button class="back-btn button" style="display: block;"> {{ section.settings.back_btn_text }}</button>
@@ -710,9 +777,44 @@
           >
             <span>O</span> {{ section.settings.form_9_option_16 }}
           </div>
+
+          {% comment %} CROSS SELL PRODUCTS {% endcomment %}
+          
+          {% assign cross_sell_products = settings.cross_sell_products %}
+           <div class="cross--sell-products">
+            <h2 class="h2 center">{{ 'general.type_form.cross_sell_head' | t }}</h2>
+            <div class="cross-sell--parent">
+              {% for product in cross_sell_products %}
+              {% assign variant = product.selected_or_first_available_variant %}
+
+                <div
+                  class="option option1 cross-sell--product {% unless product.available and variant.available %}is-disabled{% endunless %}"
+                  data-product-title="{{ product.title }}"
+                  data-product-id="{{ variant.id }}"
+                  data-product-price="{{ product.price | money }}"
+                >
+                  <div class="product_img">
+                    <img
+                      src="{{ product.featured_image | image_url: width: 100 }}"
+                      srcset="{{ product.featured_image | image_url: width: 100 }} 1x, {{ product.featured_image | image_url: width: 200 }} 2x"
+                      width="100"
+                      height="100"
+                      alt="{{ product.title | escape }}"
+                    >
+                  </div>
+                  <h5 class="h5 center">
+                    {{ product.title }}
+                  </h5>
+                <p class="pricey">{{ product.price | money }}</p>
+                </div>
+              {% endfor %}  
+            </div>
+          </div>
         </div>
+        
+        
         <div>
-          <p class="est--price">Estimated Price: <span id="total--price2">0</span></p>
+          <p class="est--price above__fortyz">{{ 'general.type_form.estemate_price_text' | t }}: <span id="total--price2">0</span></p>
         </div>
         <div class="buttons">
           <button class="back-btn button" style="display: block;"> {{ section.settings.back_btn_text }}</button>
@@ -937,24 +1039,24 @@
   // }
   // Remove the currency symbol and other non-numeric characters
   let defproductPriceString = defaultProductPrice.replace(defsymbol, '').trim();
-  console.log(`Default Price without Symbol: ${defproductPriceString}`);
+  // console.log(`Default Price without Symbol: ${defproductPriceString}`);
   totalPrice = parseFloat(defproductPriceString);
-  console.log(`Default Total Price: ${totalPrice}`);
+  // console.log(`Default Total Price: ${totalPrice}`);
   symbol = defsymbol;
   selectedProducts.forEach(product => {
     const productPriceWithSymbol = product.getAttribute('data-product-price');
-    console.log(`Raw Price: ${productPriceWithSymbol}`);
+    // console.log(`Raw Price: ${productPriceWithSymbol}`);
     // Extract the non-numeric symbol
     const symbolMatch = productPriceWithSymbol.match(/[^\d.,\s]+/);
     symbol = symbolMatch ? symbolMatch[0] : '';
     
     // Log the original price with symbol
-    console.log(`Raw Price: ${productPriceWithSymbol}`);
-    console.log(`Symbol: ${symbol}`);
+    // console.log(`Raw Price: ${productPriceWithSymbol}`);
+    // console.log(`Symbol: ${symbol}`);
     
     // Remove the currency symbol and other non-numeric characters
     let productPriceString = productPriceWithSymbol.replace(symbol, '').trim();
-    console.log(`Price without Symbol: ${productPriceString}`);
+    // console.log(`Price without Symbol: ${productPriceString}`);
     // Ensure the comma is a thousands separator and the dot is a decimal separator
     if (symbol === 'Rs') {
        productPriceString = productPriceString.replace(/,/g, '');

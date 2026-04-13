@@ -3410,6 +3410,3 @@ use-animate {
     letter-spacing: .05rem;
     line-height: calc(1 + .4 / var(--font-body-scale));
 }
-strong{
-  font-weight:bold!important;
-}

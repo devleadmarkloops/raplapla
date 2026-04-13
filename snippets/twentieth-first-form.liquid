@@ -18,7 +18,7 @@
             {% endif %}
             {% if section.settings.form_21_option_3 != blank %}
               <div class="option option1" onclick="handleOptionClickForForm21(event, 'known_allergies_form')">
-                <span>C</span> {{ section.settings.form_21_option_3 | replace: "'","" }}
+                <span>C</span> {{ section.settings.form_21_option_3  }}
               </div>
             {% endif %}
             {% if section.settings.form_21_option_4 != blank %}
@@ -50,18 +50,59 @@
 
     const currentSnippet = document.getElementById(snippetId);
     currentSnippet.style.display = 'none';
-
+      // if(clickedOptionText.toLowerCase() == 'non' or ) {
+        
+      // }
     const nextSnippet = document.getElementById(nextSnippetId);
     if (nextSnippet) {
       nextSnippet.style.display = 'block';
     }
-
     const lineItemId = `line_item-${snippetId}`;
     const inputField = document.getElementById(lineItemId);
-
     if (inputField) {
       inputField.value = clickedOptionText;
-      console.log(inputField.value);
+      
+      const value = inputField.value.trim().toLowerCase();
+      const isAffirmative = !(value === 'non' || value === 'no' );
+
+      const toggleInputs = document.querySelectorAll("[data-toggle-address]");
+
+      const submitButton = document.getElementById('submitButton');
+      const mandatoryFields = document.querySelectorAll('.submission-data input[required]');
+  
+     function checkFieldsaz() {
+        let allFieldsValid = true;
+      
+        mandatoryFields.forEach(function(field) {
+          const isVisible = window.getComputedStyle(field).display !== 'none';
+          const isEmpty = field.value.trim() === '';
+      
+          if (isVisible && isEmpty) {
+            allFieldsValid = false;
+          }
+        });
+      
+        if (allFieldsValid) {
+          submitButton.removeAttribute('disabled');
+        } else {
+          submitButton.setAttribute('disabled', 'disabled');
+        }
+      }
+
+      
+      toggleInputs.forEach(input => {
+        if (!isAffirmative) {
+          input.style.display = "none";
+          input.removeAttribute("required");
+          submitButton.removeAttribute('disabled');
+        } else {
+          input.style.display= "";
+          if (input.dataset.wasRequired === 'true') {
+            input.setAttribute("required", "required");
+          }
+        }
+      });
+      checkFieldsaz();
     }
   }
 

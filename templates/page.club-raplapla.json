@@ -1,1 +1,83 @@
-{"sections":{"main":{"type":"main-page","disabled":true,"settings":{"narrow":true,"padding_top":60,"padding_bottom":72}},"featured_product_WJ4Xbb":{"type":"featured-product","blocks":{"title_8p8P8C":{"type":"title","settings":{"title_size":"h2","title_tag":"h2","show_price":false,"price_size":"medium"}},"rating_EHKNtW":{"type":"rating","settings":{}},"price_xfWzQk":{"type":"price","settings":{"price_size":"medium","show_badges":true}},"description_7TRwLA":{"type":"description","settings":{}},"read_more_UbTeWg":{"type":"read_more","settings":{"show_icon":true}}},"block_order":["title_8p8P8C","rating_EHKNtW","price_xfWzQk","description_7TRwLA","read_more_UbTeWg"],"name":"t:sections.featured-product.presets.name","settings":{"product":"club-raplapla","layout":"media_first","full_width":false,"show_divider":false,"hide_variants":false,"enable_image_zoom":true,"enable_video_looping":false,"image_ratio":"adapt_first","image_position":"center center","enable_layered_images":true,"padding_top":36,"padding_bottom":36}}},"order":["main","featured_product_WJ4Xbb"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "narrow": true,
+        "padding_top": 60,
+        "padding_bottom": 72
+      }
+    },
+    "featured_product_WJ4Xbb": {
+      "type": "featured-product",
+      "blocks": {
+        "title_8p8P8C": {
+          "type": "title",
+          "settings": {
+            "title_size": "h2",
+            "title_tag": "h2",
+            "show_price": false,
+            "price_size": "medium"
+          }
+        },
+        "rating_EHKNtW": {
+          "type": "rating",
+          "settings": {}
+        },
+        "price_xfWzQk": {
+          "type": "price",
+          "settings": {
+            "price_size": "medium",
+            "show_badges": true
+          }
+        },
+        "description_7TRwLA": {
+          "type": "description",
+          "settings": {}
+        },
+        "read_more_UbTeWg": {
+          "type": "read_more",
+          "settings": {
+            "show_icon": true
+          }
+        }
+      },
+      "block_order": [
+        "title_8p8P8C",
+        "rating_EHKNtW",
+        "price_xfWzQk",
+        "description_7TRwLA",
+        "read_more_UbTeWg"
+      ],
+      "name": "t:sections.featured-product.presets.name",
+      "settings": {
+        "product": "club-raplapla",
+        "layout": "media_first",
+        "full_width": false,
+        "show_divider": false,
+        "hide_variants": false,
+        "enable_image_zoom": true,
+        "enable_video_looping": false,
+        "image_ratio": "adapt_first",
+        "image_position": "center center",
+        "enable_layered_images": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "featured_product_WJ4Xbb"
+  ]
+}

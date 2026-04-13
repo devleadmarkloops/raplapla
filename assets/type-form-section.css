@@ -228,7 +228,7 @@ ul#product-lists li {
   background-color: #fff;
   width: 22px;
   height: 22px;
-  display: inline-flex;
+  display: none;
   justify-content: center;
   align-items: center;
   border: var(--option-border);
@@ -566,6 +566,54 @@ ul#product-lists li {
   box-shadow: none;
 }
 
+.cross-sell--parent{
+ display: grid;
+ grid-template-columns: repeat(4, 1fr);
+ padding-top: 0;
+ gap: 1rem;
+}
+
+.cross-sell--product h5{
+  margin-bottom: auto;
+  margin-top: 0.5rem;
+}
+
+.option.option1.cross-sell--product .pricey{
+  margin: 0;
+  padding-bottom: 2rem;
+}
+
+.option.option1.cross-sell--product .product_img,.option.option1.cross-sell--product .product_img img{
+  width: 100%;
+  min-width: 100%;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.option.option1.cross-sell--product {
+  flex-direction: column;
+}
+
+.option.option1.cross-sell--product.is-disabled::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 190%;
+  height: 2px;
+  background-color: black; 
+  transform: rotate(54deg);
+  transform-origin: top left;
+  pointer-events: none;
+}
+.option.option1.cross-sell--product.is-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+  position: relative;
+  overflow: hidden;
+}
+
 /* Global Styling 3/4 Responsiveness */
 
 @media screen and (max-width: 1024px) {
@@ -601,6 +649,17 @@ ul#product-lists li {
   .flex-with-iframe .img-box iframe {
     min-height: 500px;
   }
+  .cross-sell--parent{
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .option.option1.cross-sell--product.is-disabled::before {
+    transform: rotate(56deg);
+  }
+
+  .type-form-section .button {
+    flex: 1;
+  }
+
   .custom-form-container
     .flex-block.single-form
     .form-container
@@ -661,6 +720,15 @@ ul#product-lists li {
   font-size: 24px;
   color: #521442;
 }
+.newsletter-hidden-form {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
+
 .login_wrapper {
   text-align: center;
   padding-block: 5%;
@@ -693,22 +761,25 @@ ul#product-lists li {
   }
 }
 
-
 .notification {
-  position: fixed;
-  top: -100%;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #f44336;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
-  font-size: 16px;
-  z-index: 1000;
-  transition: top 0.3s ease;
+    position: fixed;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    z-index: 1000;
+    transition: top 0.3s ease-in-out;
 }
 
-.notification.show{
-  top: 100px;
+.notification.show {
+    top: 100px;
+}
+.invalid-email {
+    border: 1px solid red !important;
+    background-color: #ffe6e6 !important;
 }

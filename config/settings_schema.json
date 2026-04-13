@@ -819,5 +819,27 @@
         "label": "t:settings_schema.gift_card.settings.gift_card_logo_height.label"
       }
     ]
+  },
+  {
+    "name": "Type form",
+    "settings": [
+      {
+      "type" : "text",
+      "label" : "estemate_price",
+      "id" : "estemate_price_text",
+      "default" : "Estimé"
+      },
+          {
+      "type" : "text",
+      "label" : "autre input placeholder text",
+      "id" : "placeholder",
+      "default" : "Quelle autre raison?"
+    },
+    {
+      "type": "product_list",
+      "id": "cross_sell_products",
+      "label": "Cross Sell Products at 9th step!"
+    }
+    ]
   }
 ]
